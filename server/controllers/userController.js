@@ -1,49 +1,68 @@
 const UserService = require("../services/userService");
-const ApiError = require("../error/ApiError");
 const uuid = require("uuid");
 const path = require("path");
-const jwt = require("jsonwebtoken");
 
-const generateJwt = (id, email, role) => {
-    return jwt.sing(
-        { id, email, role },
-        process.env.SECRET_KEY,
-        { expiresIn: "24h" }
-    );
-}
 
 class UserController {
     async registration(req, res, next) {
         try {
-            await UserService(req.body);
-            return token.json({ token });
+            const { email, password, nickname } = req.body;
+            const userData = await UserService.registration(email, password, nickname);
+            res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
+            return res.json(userData);
 
             // const { img } = req.files;
             // let fileName = uuid.v4() + ".jpg";
             // img.mv(path.resolve(__dirname, "..", "static", fileName));
         } catch (e) {
-            next(ApiError.badRequest(e.message));
+            next(e);
         }
 
     }
 
-    async login(req, res) {
+    async login(req, res, next) {
         try {
-            const user = await UserService.login(req.body);
-            const token = generateJwt(user.id, user.email, user.role);
-            return res.json({ token });
+            const { email, password } = req.body;
+            const userData = await UserService.login(email, password);
+            res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            return res.json(userData);
         } catch (e) {
-            next(ApiError.badRequest(e.message));
+            next(e);
         }
     }
 
-    async check(req, res, next) {
+    async logout(req, res, next) {
         try {
-            const token = generateJwt(req.user.id, req.user.email, req.user.role);
-            return res.json({ token });
+            const { refreshToken } = req.cookies;
+            await UserService.logout(refreshToken);
+            res.clearCookie("refreshToken");
+            return res.json(200);
         } catch (e) {
-
+            next(e);
         }
+    }
+
+
+    async refresh(req, res, next) {
+        try {
+            const { refreshToken } = req.cookies;
+            const userData = await UserService.refresh(refreshToken);
+            res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true });
+            return res.json(200);
+        } catch (e) {
+            next(e);
+        }
+    }
+
+    async activate(req, res, next) {
+        try {
+            const activationLink = req.params.link;
+            await UserService.activate(activationLink);
+            return res.redirect(process.env.CLIENT_URL);
+        } catch (e) {
+            next(e);
+        }
+
     }
 }
 

@@ -11,9 +11,13 @@ const errorHandler = require("./middleware/ErrorHandlingMiddleware");
 const path = require("path");
 
 const app = express();
-app.use(cors());
+
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL,
+}));
 app.use(express.static(path.resolve(__dirname, "static")));
 app.use(fileUpload({}));
 app.use('/api', router);

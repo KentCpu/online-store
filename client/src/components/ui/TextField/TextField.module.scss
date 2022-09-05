@@ -1,0 +1,24 @@
+@import "../../../scss/mixins/rem";
+
+.caption {
+    display: inline-block;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: rem(5);
+}
+
+.label {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.errorMessage {
+    margin-top: rem(7);
+    font-size: rem(15);
+    color: #c80000;
+}

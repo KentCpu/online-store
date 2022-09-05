@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { FC } from "react";
+import RegistrationForm from "../../components/AuthForm/RegisterForm";
 
-const Registration: React.FC = () => {
+
+const Registration: FC = () => {
     return (
-        <div>Registration</div>
+        <div style={{ backgroundColor: "#f2f2f2", }}>
+            <RegistrationForm />
+        </div>
     )
 };
 

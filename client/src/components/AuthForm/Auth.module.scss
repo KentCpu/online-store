@@ -1,0 +1,80 @@
+@import "src/scss/mixins/rem";
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 rem(15);
+}
+
+.form-wrapper {
+    border-radius: rem(10);
+    padding: rem(30) rem(70);
+    background-color: #fff;
+    width: rem(600);
+    box-shadow: 0 rem(5) rem(10) 0 rgb(0 0 0 / 10%);
+}
+
+.header {
+    margin-bottom: rem(50);
+    text-align: center;
+}
+
+.text-field {
+    padding: 0 rem(40) 0 rem(20);
+    height: rem(50);
+    line-height: 1.2;
+    font-size: rem(18);
+    background-color: #f7f7f7;
+    border: rem(1) solid #e6e6e6;
+    border-radius: rem(10);
+    width: 100%;
+    transition: .3s all;
+
+    &:focus {
+        border: rem(1) solid #7572f8;
+    }
+
+    &-wrapper {
+        &:not(:last-child) {
+            margin-bottom: rem(20);
+        }
+    }
+}
+
+.submit {
+    border: 0;
+    text-transform: uppercase;
+    color: #fff;
+    margin: rem(40) 0 rem(35) 0;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: rem(3);
+    font-weight: 500;
+    height: rem(55);
+    color: #fff;
+    font-size: rem(18);
+    letter-spacing: rem(5);
+    background-color: #7572f8;
+    transition: all 0.4s ;
+
+    &:hover {
+        background-color: #403866;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .form-wrapper {
+        padding: rem(30) rem(60);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .form-wrapper {
+        padding: rem(30) rem(15);
+    }
+}

@@ -11,17 +11,13 @@ const UserDto = require("../dtos/user-dto");
 
 class UserService {
     async registration(email, password, nickname) {
-        const candidate = await userModel.findOne({ email });
-        if (candidate) {
-            throw ApiError.badRequest(`Пользователь с почтовым адресом ${email} уже существует`);
-        }
         const hashPassword = await bcrypt.hash(password, 3);
         const activationLink = uuid.v4(); // v34fa-asfasf-142saf-sa-asf
 
         const user = await userModel.create({ email, nickname, password: hashPassword, activationLink });
         await mailService.sendActivationMail(email, `${process.env.API_URL}/api/activate/${activationLink}`);
 
-        const userDto = new UserDto(user); // id, email, isActivated
+        const userDto = new UserDto(user); // id, email, nickname, isActivated
         const tokens = tokenService.generateTokens({ ...userDto });
         await tokenService.saveRefreshToken(userDto.id, tokens.refreshToken);
 
@@ -74,10 +70,6 @@ class UserService {
         }
         user.isActivated = true;
         await user.save();
-    }
-
-    async check({ id }) {
-
     }
 }
 

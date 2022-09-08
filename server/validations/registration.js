@@ -1,8 +1,10 @@
-const { body } = require("express-validator");
+const {body} = require("express-validator");
 const userModel = require("../models/User");
+const {validationResult} = require("express-validator");
+const ApiError = require("../error/ApiError");
 
 const customValidation = (key, value, errorMessage) => {
-    return userModel.findOne({ [key]: value })
+    return userModel.findOne({[key]: value})
         .then(user => {
             if (user) {
                 return Promise.reject(errorMessage);
@@ -10,14 +12,14 @@ const customValidation = (key, value, errorMessage) => {
         });
 }
 
-const registrationSchema = [
+const registration = [
     body("nickname")
-        .exists({ checkFalsy: true })
+        .exists({checkFalsy: true})
         .withMessage("Required field")
         .bail()
         .custom(nicknameValue => customValidation("nickname", nicknameValue, "This nickname is already registered")),
     body('email')
-        .exists({ checkFalsy: true })
+        .exists({checkFalsy: true})
         .withMessage("Required field")
         .bail()
         .isEmail()
@@ -25,7 +27,7 @@ const registrationSchema = [
         .bail()
         .custom(email => customValidation("email", email, "This e-mail is already registered")),
     body('password')
-        .exists({ checkFalsy: true })
+        .exists({checkFalsy: true})
         .withMessage("Required field")
         .bail()
         .isLength({
@@ -39,4 +41,17 @@ const registrationSchema = [
         .withMessage("Password can contain max 20 characters"),
 ];
 
-module.exports = registrationSchema;
+const registrationHandler = async (req, res, next) => {
+    try {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return next(ApiError.badRequest("Некорректные данные при регистрации", errors.array()));
+        }
+        next();
+    } catch (e) {
+        next(e);
+    }
+}
+
+module.exports.registrationSchema = registration;
+module.exports.registrationHandler = registrationHandler;

@@ -13,7 +13,7 @@
     padding: rem(30) rem(70);
     background-color: #fff;
     width: rem(600);
-    box-shadow: 0 rem(5) rem(10) 0 rgb(0 0 0 / 10%);
+    box-shadow: 0 rem(5) rem(10) 0 rgb(0 0 0 / 15%);
 }
 
 .header {
@@ -65,6 +65,13 @@
     &:hover {
         background-color: #403866;
     }
+}
+
+.error-message {
+    text-align: center;
+    margin-top: rem(20);
+    font-size: rem(16);
+    color: #c80000;
 }
 
 @media screen and (max-width: 767px) {

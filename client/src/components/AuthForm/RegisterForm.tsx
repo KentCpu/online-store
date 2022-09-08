@@ -5,8 +5,8 @@ import TextField from '../ui/TextField/TextField';
 import s from "./Auth.module.scss";
 import useActions from "../../hooks/useActions";
 import Title from "../ui/Title/Title";
-import {Link} from "react-router-dom";
-import {HOME_ROUTE} from "../../utils/constants/url";
+import {Link, useNavigate} from "react-router-dom";
+import {HOME_ROUTE, LOGIN_ROUTE} from "../../utils/constants/url";
 import {IRegistrationData} from "../../types/IRegistrationData";
 import useTogglePassword from "../../hooks/useTogglePassword";
 import PasswordIcon from "../PasswordIcon/PasswordIcon";
@@ -22,10 +22,12 @@ const RegistrationForm: FC = () => {
     });
     const {isVisible, type, changePassword} = useTogglePassword();
     const inputRef = useRef<HTMLInputElement>(null);
+    const navigate = useNavigate();
 
     const submit = (e: SyntheticEvent) => {
         e.preventDefault();
         registration(userData, setError);
+        navigate(HOME_ROUTE);
     }
 
 
@@ -74,7 +76,7 @@ const RegistrationForm: FC = () => {
                     </div>
 
                     <button type="submit" className={s["submit"]}>Create</button>
-                    <span>Already have an account? <Link to={HOME_ROUTE}> Sign-In</Link></span>
+                    <span>Already have an account? <Link to={LOGIN_ROUTE}> Sign-In</Link></span>
                 </form>
             </div>
         </div>

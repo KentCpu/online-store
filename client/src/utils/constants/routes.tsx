@@ -1,7 +1,8 @@
 import React from "react";
 import Login from "../../pages/Login/Login";
 import Registration from "../../pages/Registration/Registration";
-import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "./url";
+import {HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "./url";
+import Layout from "../../components/Layout/Layout";
 
 
 export interface IRoute {
@@ -20,10 +21,18 @@ export const publicRoutes: IRoute[] = [
         element: <Registration/>,
     },
 
+    {
+        path: HOME_ROUTE,
+        element: <Layout/>,
+    },
 
 ];
 
 export const privateRoutes: IRoute[] = [
+    {
+        path: HOME_ROUTE,
+        element: <Layout/>,
+    },
     {
         path: "",
         element: <Registration/>,

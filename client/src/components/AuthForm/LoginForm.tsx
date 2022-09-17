@@ -25,9 +25,9 @@ const LoginForm = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
 
-    const submit = (e: SyntheticEvent) => {
+    const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
-        login(userData, setError);
+        await login(userData, setError);
         navigate(HOME_ROUTE);
     }
 

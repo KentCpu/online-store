@@ -1,0 +1,13 @@
+
+.favorites {
+  &__link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 25px;
+    transition: all 0.2s;
+
+    &:hover {
+      color: #61DAFB;
+    }
+  }
+}

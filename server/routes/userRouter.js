@@ -16,5 +16,4 @@ router.get("/refresh", userController.refresh);
 // router.get("/auth", authMiddleware, userController.check);
 
 
-
 module.exports = router;

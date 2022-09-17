@@ -1,0 +1,153 @@
+.header {
+  background-color: #20232A;
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
+
+  &__panel {
+    display: flex;
+    order: 2;
+  }
+}
+
+.profile {
+  margin-right: 20px;
+
+  &__link {
+    color: #fff;
+    font-size: 25px;
+    text-decoration: none;
+    transition: all 0.2s;
+
+    &:hover {
+      color: #61DAFB;
+    }
+  }
+}
+
+
+.logo {
+  flex: 1 1 auto;
+
+  &__link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 30px;
+  }
+
+  &__title {
+    padding-left: 8px;
+  }
+}
+
+
+.menu {
+  display: flex;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-right: 40px;
+  }
+
+  &__item:not(:last-child) {
+    margin-right: 63px;
+  }
+
+  &__link {
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+
+    transition: all 0.2s;
+
+    &:hover {
+      color: #61DAFB;
+    }
+  }
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+  font-size: 25px;
+  margin-right: 12px;
+  color: #fff;
+}
+
+
+@media (max-width: 1024px) {
+  .menu__item:not(:last-child) {
+    margin-right: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  .logo {
+    flex: 0 1 auto;
+    margin: 0 auto;
+    order: 1;
+  }
+
+  .menu {
+    order: 0;
+
+    &__content {
+      display: none;
+      z-index: 5;
+      font-size: 25px;
+      padding: 10px 15px;
+      background-color: #1F1F1F;
+      position: absolute;
+      transform: translateY(100%);
+      bottom: 0;
+      left: 0;
+
+      &_active {
+        display: block;
+      }
+    }
+
+    &__items {
+      flex-direction: column;
+    }
+
+    &__item {
+      margin-right: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .profile {
+    margin-right: 13px;
+  }
+
+  .logo__link, .profile__link, .burger {
+    font-size: 22px;
+  }
+  .menu__content {
+    width: 100%;
+  }
+}

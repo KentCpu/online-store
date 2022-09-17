@@ -20,11 +20,11 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   font-size: $baseFontSize;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
+

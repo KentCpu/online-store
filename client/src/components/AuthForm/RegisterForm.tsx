@@ -24,9 +24,9 @@ const RegistrationForm: FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
 
-    const submit = (e: SyntheticEvent) => {
+    const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
-        registration(userData, setError);
+        await registration(userData, setError);
         navigate(HOME_ROUTE);
     }
 

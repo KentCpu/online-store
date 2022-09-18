@@ -12,6 +12,7 @@ import {HOME_ROUTE, REGISTRATION_ROUTE} from "../../utils/constants/url";
 import {ILoginData} from "../../types/ILoginData";
 import {IErrorLogin} from "../../types/IErrorLogin";
 import {useNavigate} from "react-router-dom";
+import Button from "../ui/Button/Button";
 
 
 const LoginForm = () => {
@@ -67,7 +68,7 @@ const LoginForm = () => {
                         <div className={s["error-message"]}>{error.incorrectData}</div>
                     </div>
 
-                    <button type="submit" className={s["submit"]}>Sign in</button>
+                    <Button type="submit" className={s["submit"]}>Sign in</Button>
                     <span>Don't have an account yet? <Link to={REGISTRATION_ROUTE}> Create</Link></span>
                 </form>
             </div>

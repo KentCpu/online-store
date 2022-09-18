@@ -2,6 +2,7 @@
 
 .wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -44,27 +45,13 @@
 }
 
 .submit {
-    border: 0;
     text-transform: uppercase;
-    color: #fff;
     margin: rem(40) 0 rem(35) 0;
-    cursor: pointer;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: rem(3);
     font-weight: 500;
     height: rem(55);
-    color: #fff;
     font-size: rem(18);
     letter-spacing: rem(5);
-    background-color: #7572f8;
-    transition: all 0.4s ;
-
-    &:hover {
-        background-color: #403866;
-    }
 }
 
 .error-message {

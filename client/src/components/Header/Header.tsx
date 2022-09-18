@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "./Header.module.scss";
 import Menu from "./Menu";
-import Logo from "./Logo";
+import Logo from "../Logo/Logo";
 import Favorites from "../Favorites/Favorites";
 import Profile from "./Profile";
 

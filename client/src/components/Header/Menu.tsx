@@ -7,29 +7,30 @@ import {RootState} from "../../store";
 import Burger from "./Burger";
 import classNames from "classnames";
 
+
 const Menu: React.FC = () => {
-    const isAuth = useTypedSelector((state: RootState) => state?.user.isAuth);
     const [isOpen, setIsOpen] = useState<boolean>(false);
+    const isAuth = useTypedSelector((state: RootState) => state?.user.isAuth);
+    const items = [
+        {href: HOME_ROUTE, text: "Books", isVisible: true},
+        {href: RATINGS_ROUTE, text: "Ratings", isVisible: true},
+        {href: REVIEWS_ROUTE, text: "Reviews", isVisible: true},
+        {href: LOGIN_ROUTE, text: "Sign in", isVisible: !isAuth},
+    ];
 
     return (
         <div className={s["menu"]}>
             <Burger isOpen={isOpen} setIsOpen={setIsOpen}/>
             <nav className={classNames(s["menu__content"], isOpen && s["menu__content_active"])}>
                 <ul className={s["menu__items"]}>
-                    <li className={s["menu__item"]}>
-                        <Link className={s["menu__link"]} to={HOME_ROUTE}>Books</Link>
-                    </li>
-                    <li className={s["menu__item"]}>
-                        <Link className={s["menu__link"]} to={RATINGS_ROUTE}>Ratings</Link>
-                    </li>
-                    <li className={s["menu__item"]}>
-                        <Link className={s["menu__link"]} to={REVIEWS_ROUTE}>Reviews</Link>
-                    </li>
                     {
-                        !isAuth &&
-                            <li className={s["menu__item"]}>
-                                <Link className={s["menu__link"]} to={LOGIN_ROUTE}>Sign in</Link>
-                            </li>
+                        items.map(item =>
+                            (
+                                item?.isVisible && <li key={item.href} className={s["menu__item"]}>
+                                    <Link className={s["menu__link"]} to={item.href}>{item.text}</Link>
+                                </li>
+                            )
+                        )
                     }
                 </ul>
             </nav>

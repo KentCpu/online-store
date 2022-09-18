@@ -32,21 +32,6 @@
 }
 
 
-.logo {
-  flex: 1 1 auto;
-
-  &__link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 30px;
-  }
-
-  &__title {
-    padding-left: 8px;
-  }
-}
-
-
 .menu {
   display: flex;
 
@@ -100,12 +85,6 @@
     display: block;
   }
 
-  .logo {
-    flex: 0 1 auto;
-    margin: 0 auto;
-    order: 1;
-  }
-
   .menu {
     order: 0;
 
@@ -144,7 +123,7 @@
     margin-right: 13px;
   }
 
-  .logo__link, .profile__link, .burger {
+  .profile__link, .burger {
     font-size: 22px;
   }
   .menu__content {

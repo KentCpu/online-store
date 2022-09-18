@@ -1,0 +1,26 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  padding: 0 5px;
+
+  &[disabled] {
+    pointer-events: none;
+    cursor: none;
+  }
+}
+
+.startIcon {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+.endIcon {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}

@@ -4,6 +4,7 @@ $baseFontSize: 16px;
 
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 * {
@@ -17,9 +18,18 @@ html {
   box-sizing: inherit;
 }
 
+#root {
+  height: 100%;
+}
+
+.main {
+  height: 100%;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   font-size: $baseFontSize;
+  height: 100%;
 }
 
 .container {
@@ -27,4 +37,6 @@ body {
   margin: 0 auto;
   padding: 0 15px;
 }
+
+
 

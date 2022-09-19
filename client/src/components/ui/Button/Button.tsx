@@ -9,12 +9,15 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 
-const Button: FC<ButtonProps> = ({startIcon, endIcon, className, children}) => {
+const Button: FC<ButtonProps> = (props) => {
+    const {startIcon, endIcon, type, className, onClick, children} = props;
     return (
         <ButtonBase
+            type={type}
             startIcon={startIcon}
             endIcon={endIcon}
             className={classNames(s.btn, className)}
+            onClick={onClick}
         >
             {children}
         </ButtonBase>

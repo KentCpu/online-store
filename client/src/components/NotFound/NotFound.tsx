@@ -16,9 +16,9 @@ const NotFound = () => {
     return (
         <section className={s.section}>
             <div className={s.container}>
-                <Title>404. Страница не найдена</Title>
-                <p className={s.desc}>Возможно неверно указан адрес или страница была перемещена</p>
-                <Button className={s.btn} onClick={backMainPage}>Вернуться на главную</Button>
+                <Title>404. Page not found</Title>
+                <p className={s.desc}>The address may be incorrect or the page has been moved.</p>
+                <Button className={s.btn} onClick={backMainPage}>Go back to the main page</Button>
             </div>
         </section>
     );

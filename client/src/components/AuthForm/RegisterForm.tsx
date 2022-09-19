@@ -10,6 +10,7 @@ import {HOME_ROUTE, LOGIN_ROUTE} from "../../utils/constants/url";
 import {IRegistrationData} from "../../types/IRegistrationData";
 import useTogglePassword from "../../hooks/useTogglePassword";
 import PasswordIcon from "../PasswordIcon/PasswordIcon";
+import Button from "../ui/Button/Button";
 
 
 const RegistrationForm: FC = () => {
@@ -75,7 +76,7 @@ const RegistrationForm: FC = () => {
                         />
                     </div>
 
-                    <button type="submit" className={s["submit"]}>Create</button>
+                    <Button type="submit" className={s["submit"]}>Create</Button>
                     <span>Already have an account? <Link to={LOGIN_ROUTE}> Sign-In</Link></span>
                 </form>
             </div>

@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import {GlobalLoader} from "../GlobalLoader/GlobalLoader";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {RootState} from "../../store";
+import Footer from "../Footer/Footer";
 
 const Layout: FC<PropsWithChildren> = ({children}) => {
     const isLoading = useTypedSelector((state: RootState) => state?.user.isLoading);
@@ -14,6 +15,7 @@ const Layout: FC<PropsWithChildren> = ({children}) => {
         <>
             <Header/>
             <main className="main">{children}</main>
+            <Footer/>
         </>
     );
 };

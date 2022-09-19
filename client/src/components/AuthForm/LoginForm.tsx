@@ -44,8 +44,8 @@ const LoginForm = () => {
                     <div className={s["text-field-wrapper"]}>
                         <TextField
                             label="Email"
-                            nameInput="email"
-                            style={s["text-field"]}
+                            name="email"
+                            className={s["text-field"]}
                             value={userData.email}
                             errorMessage={error?.email}
                             onChange={(e) => handleChange<IRegistrationData>(e, setUserData)}
@@ -56,10 +56,10 @@ const LoginForm = () => {
                         <TextField
                             ref={inputRef}
                             label="Password"
-                            nameInput="password"
-                            style={s["text-field"]}
+                            name="password"
+                            className={s["text-field"]}
                             value={userData.password}
-                            typeInput={type}
+                            type={type}
                             errorMessage={error?.password}
                             endIcon={<PasswordIcon isVisible={isVisible} changePassword={changePassword}/>}
                             onChange={(e) => handleChange<IRegistrationData>(e, setUserData)}

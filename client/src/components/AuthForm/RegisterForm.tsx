@@ -43,8 +43,8 @@ const RegistrationForm: FC = () => {
                     <div className={s["text-field-wrapper"]}>
                         <TextField
                             label="Nickname"
-                            nameInput="nickname"
-                            style={s["text-field"]}
+                            name="nickname"
+                            className={s["text-field"]}
                             value={userData.nickname}
                             errorMessage={error?.nickname}
                             onChange={(e) => handleChange<IRegistrationData>(e, setUserData)}
@@ -54,8 +54,8 @@ const RegistrationForm: FC = () => {
                     <div className={s["text-field-wrapper"]}>
                         <TextField
                             label="Email"
-                            nameInput="email"
-                            style={s["text-field"]}
+                            name="email"
+                            className={s["text-field"]}
                             value={userData.email}
                             errorMessage={error?.email}
                             onChange={(e) => handleChange<IRegistrationData>(e, setUserData)}
@@ -66,10 +66,10 @@ const RegistrationForm: FC = () => {
                         <TextField
                             ref={inputRef}
                             label="Password"
-                            nameInput="password"
-                            style={s["text-field"]}
+                            name="password"
+                            className={s["text-field"]}
                             value={userData.password}
-                            typeInput={type}
+                            type={type}
                             errorMessage={error?.password}
                             endIcon={<PasswordIcon isVisible={isVisible} changePassword={changePassword}/>}
                             onChange={(e) => handleChange<IRegistrationData>(e, setUserData)}

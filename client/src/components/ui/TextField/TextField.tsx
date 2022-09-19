@@ -6,18 +6,14 @@ import useIsMount from "../../../hooks/useIsMount";
 
 export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
-    typeInput?: string;
-    nameInput?: string;
     errorMessage?: string;
-    value?: string | number;
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-    style?: object;
     endIcon?: React.ReactNode;
 }
 
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
-    const {label, nameInput, typeInput = "text", value, errorMessage, onChange, style, endIcon} = props;
+    const {label, name, type = "text", value, errorMessage, onChange, className, endIcon} = props;
     const isMount = useIsMount();
     const internalRef = useRef<HTMLInputElement>(null);
     React.useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(ref, () => internalRef.current);
@@ -26,18 +22,18 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
         if(isMount) {
             internalRef?.current?.focus();
         }
-    }, [typeInput]);
+    }, [type]);
 
 
     return (
-        <label htmlFor={nameInput}>
+        <label htmlFor={name}>
             {label && <span className={s.caption}>{label}</span>}
             <div className={s["input-wrapper"]}>
                 <input
                     ref={internalRef}
-                    className={classNames(s.input, style)}
-                    type={typeInput}
-                    name={nameInput}
+                    className={classNames(s.input, className)}
+                    type={type}
+                    name={name}
                     value={value}
                     onChange={onChange}
                 />

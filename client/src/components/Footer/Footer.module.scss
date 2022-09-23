@@ -1,6 +1,6 @@
 .footer {
   background-color: #20232A;
-
+  flex-shrink: 0;
   &__wrapper {
     display: flex;
     align-items: center;

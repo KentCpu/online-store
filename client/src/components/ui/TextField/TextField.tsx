@@ -13,7 +13,7 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
-    const {label, name, type = "text", value, errorMessage, onChange, className, endIcon} = props;
+    const {label, placeholder, name, type = "text", value, errorMessage, onChange, className, endIcon} = props;
     const isMount = useIsMount();
     const internalRef = useRef<HTMLInputElement>(null);
     React.useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(ref, () => internalRef.current);
@@ -31,11 +31,12 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
             <div className={s["input-wrapper"]}>
                 <input
                     ref={internalRef}
-                    className={classNames(s.input, className)}
                     type={type}
                     name={name}
                     value={value}
                     onChange={onChange}
+                    placeholder={placeholder}
+                    className={classNames(s.input, className)}
                 />
                 {endIcon}
             </div>

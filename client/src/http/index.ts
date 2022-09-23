@@ -13,7 +13,6 @@ $api.interceptors.request.use(config => {
     return config;
 });
 
-// token == undefined ERROR !!!
 
 $api.interceptors.response.use(config => {
     return config;

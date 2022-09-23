@@ -4,7 +4,11 @@
   font-weight: 500;
   color: #fff;
   background-color: #7572f8;
-  transition: all 0.4s ;
+  transition: all 0.4s;
+
+  &:disabled {
+    opacity: 0.6;
+  }
 
   &:hover {
     background-color: #403866;

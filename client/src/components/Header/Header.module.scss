@@ -3,6 +3,7 @@
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 1000;
 
   &__wrapper {
     display: flex;
@@ -37,7 +38,6 @@
   &__content {
     display: flex;
     align-items: center;
-
     flex-wrap: wrap;
   }
 
@@ -56,9 +56,7 @@
     cursor: pointer;
     text-decoration: none;
     color: #fff;
-
     transition: all 0.2s;
-
     &:hover {
       color: #61DAFB;
     }
@@ -90,7 +88,6 @@
 
     &__content {
       display: none;
-      z-index: 5;
       font-size: 25px;
       padding: 10px 15px;
       background-color: #1F1F1F;
@@ -98,6 +95,7 @@
       transform: translateY(100%);
       bottom: 0;
       left: 0;
+
 
       &_active {
         display: block;

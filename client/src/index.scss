@@ -19,15 +19,15 @@ html {
 }
 
 #root {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+
 body {
-  //display: flex;
-  //flex-direction: column;
   font-family: 'Poppins', sans-serif;
   font-size: $baseFontSize;
-  height: 100%;
 }
 
 .container {
@@ -37,9 +37,10 @@ body {
 }
 
 .main {
-  height: 100%;
   flex: 1 0 auto;
 }
+
+
 
 
 

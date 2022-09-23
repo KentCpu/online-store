@@ -2,9 +2,9 @@ import React from "react";
 import Login from "../../pages/Login/Login";
 import Registration from "../../pages/Registration/Registration";
 import {HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "./url";
-import Layout from "../../components/Layout/Layout";
 import Page404 from "../../pages/Page404";
-import Home from "../../pages/Home/Home";
+
+import Index from "../../pages";
 
 
 export interface IRoute {
@@ -30,7 +30,7 @@ export const publicRoutes: IRoute[] = [
 
     {
         path: HOME_ROUTE,
-        element: <Home/>,
+        element: <Index/>,
     },
 ];
 
@@ -43,7 +43,7 @@ export const privateRoutes: IRoute[] = [
 
     {
         path: HOME_ROUTE,
-        element: <Home/>,
+        element: <Index/>,
     },
 
 ];

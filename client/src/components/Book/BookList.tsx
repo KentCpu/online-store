@@ -14,15 +14,16 @@ const BookList: FC<BookList> = ({books}) => {
         return getInfoBook(book);
     });
 
+
     return (
         <>
             {
                 Books ?
                     <div className={s["book-container"]}>
-                        {Books.map(book => {
+                        {Books.map((book, index) => {
                             return <Book
                                 id={book.id}
-                                key={book.id}
+                                key={index}
                                 title={book.title}
                                 authors={book.authors}
                                 price={book.price}

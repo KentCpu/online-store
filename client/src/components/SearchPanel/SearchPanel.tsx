@@ -1,4 +1,4 @@
-import React, {FC, SyntheticEvent, useState} from 'react';
+import React, {FC, memo, SyntheticEvent, useState} from 'react';
 import TextField from "../ui/TextField/TextField";
 import s from "./SearchPanel.module.scss";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons/faMagnifyingGlass";
@@ -33,4 +33,4 @@ const SearchPanel: FC<SearchPanel> = ({onSubmit}) => {
     );
 };
 
-export default SearchPanel;
+export default memo(SearchPanel);

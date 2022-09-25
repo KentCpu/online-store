@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import s from "./Book.module.scss";
 import {Link} from "react-router-dom";
 import Button from "../ui/Button/Button";
@@ -12,7 +12,7 @@ export interface IBookProps {
     isAvailable: boolean;
 }
 
-const Book: FC<IBookProps> = ({title, authors, imageLink, price, isAvailable}) => {
+const Book: FC<IBookProps> =  ({title, authors, imageLink, price, isAvailable}) => {
     return (
         <div className={s["book"]}>
             <div className={s["cover"]}>
@@ -34,4 +34,4 @@ const Book: FC<IBookProps> = ({title, authors, imageLink, price, isAvailable}) =
     );
 };
 
-export default Book;
+export default memo(Book);

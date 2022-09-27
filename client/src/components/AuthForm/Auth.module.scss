@@ -11,25 +11,23 @@
 
 .form-wrapper {
     border-radius: rem(10);
-    padding: rem(30) rem(70);
+    padding: rem(30) rem(50);
     background-color: #fff;
-    width: rem(600);
+    width: rem(550);
     box-shadow: 0 rem(5) rem(10) 0 rgb(0 0 0 / 15%);
 }
 
 .header {
-    margin-bottom: rem(50);
+    margin-bottom: rem(40);
     text-align: center;
 }
 
 .text-field {
-    padding: 0 rem(40) 0 rem(20);
-    height: rem(50);
-    line-height: 1.2;
-    font-size: rem(18);
+    padding: 0 rem(40) 0 rem(15);
+    height: rem(45);
     background-color: #f2f2f2;
     border: rem(1) solid #e6e6e6;
-    border-radius: rem(10);
+    border-radius: rem(7);
     width: 100%;
     transition: .3s all;
 
@@ -46,11 +44,10 @@
 
 .submit {
     text-transform: uppercase;
-    margin: rem(40) 0 rem(35) 0;
+    margin: rem(30) 0 rem(25) 0;
     width: 100%;
     font-weight: 500;
-    height: rem(55);
-    font-size: rem(18);
+    height: rem(50);
     letter-spacing: rem(5);
 }
 
@@ -61,14 +58,9 @@
     color: #c80000;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 560px) {
     .form-wrapper {
-        padding: rem(30) rem(60);
-    }
-}
-
-@media screen and (max-width: 576px) {
-    .form-wrapper {
-        padding: rem(30) rem(15);
+        width: 100%;
+        padding: rem(20) rem(15);
     }
 }

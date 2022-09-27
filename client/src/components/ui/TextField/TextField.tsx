@@ -26,7 +26,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
 
 
     return (
-        <label htmlFor={name}>
+        <label className={s.label} htmlFor={name}>
             {label && <span className={s.caption}>{label}</span>}
             <div className={s["input-wrapper"]}>
                 <input

@@ -1,14 +1,15 @@
 import React from 'react';
-import s from "./Favorites.module.scss";
+import s from "./Busket.module.scss";
 import {faBook} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {RootState} from "../../store";
 import {Link} from "react-router-dom";
 import {FAVORITES_ROUTE} from "../../utils/constants/url";
+import {faCartShopping} from "@fortawesome/free-solid-svg-icons/faCartShopping";
 
 
-const Favorites = () => {
+const Basket = () => {
     const isAuth = useTypedSelector((state: RootState) => state?.user.isAuth);
 
     if(!isAuth) {
@@ -18,10 +19,10 @@ const Favorites = () => {
     return (
         <div className={s["favorites"]}>
             <Link className={s["favorites__link"]} to={FAVORITES_ROUTE}>
-                <FontAwesomeIcon icon={faBook}/>
+                <FontAwesomeIcon icon={faCartShopping}/>
             </Link>
         </div>
     );
 };
 
-export default Favorites;
+export default Basket;

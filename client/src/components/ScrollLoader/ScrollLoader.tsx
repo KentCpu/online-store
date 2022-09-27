@@ -11,13 +11,13 @@ const ScrollLoader: FC<DownloadScrollProps> = ({downloadData}) => {
     const [isLoader, setIsLoader] = useState(false);
     useScroll(downloadDataWrapper, lastElementVisible);
 
-    async function downloadDataWrapper () {
+    async function downloadDataWrapper() {
         setIsLoader(true);
         try {
             await downloadData();
-        }catch (e) {
+        } catch (e) {
             console.log(e)
-        }finally {
+        } finally {
             setIsLoader(false);
         }
     }
@@ -27,7 +27,7 @@ const ScrollLoader: FC<DownloadScrollProps> = ({downloadData}) => {
         <div>
             {
                 isLoader ?
-                    <ClipLoader color={"green"} size={50} />
+                    <ClipLoader color={"green"} size={50}/>
                     :
                     <div ref={lastElementVisible}></div>
             }

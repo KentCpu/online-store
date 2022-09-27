@@ -1,6 +1,5 @@
 .footer {
   background-color: #20232A;
-  flex-shrink: 0;
   &__wrapper {
     display: flex;
     align-items: center;
@@ -18,38 +17,6 @@
     @media (max-width: 700px) {
       margin-bottom: 12px;
     }
-  }
-
-}
-
-
-.menu {
-  display: flex;
-  align-items: center;
-  list-style: none;
-
-  &__item:not(:last-child) {
-    margin-right: 45px;
-  }
-
-  &__link {
-    cursor: pointer;
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-    transition: all 0.2s;
-
-    &:hover {
-      color: #61DAFB;
-    }
-
-    @media (max-width: 700px) {
-      font-size: 20px;
-    }
-  }
-
-  @media (max-width: 700px) {
-    margin-bottom: 10px;
   }
 }
 

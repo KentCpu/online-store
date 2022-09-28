@@ -1,20 +1,20 @@
 import React, {FC} from 'react';
-import Book from "./Book";
-import s from "./Book.module.scss";
-import {getInfoBook} from "../../utils/helpers";
-import Title from "../ui/Title/Title";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {RootState} from "../../store";
-import ScrollLoader from "../ScrollLoader/ScrollLoader";
-import useActions from "../../hooks/useActions";
+import Book from "./PreviewBook";
+import s from "./PreviewBook.module.scss";
+import {getInfoPreviewBook} from "../../../utils/helpers";
+import Title from "../../ui/Title/Title";
+import {useTypedSelector} from "../../../hooks/useTypedSelector";
+import {RootState} from "../../../store";
+import ScrollLoader from "../../ScrollLoader/ScrollLoader";
+import useActions from "../../../hooks/useActions";
 
 
-const BookList: FC = () => {
+const PreviewBookList: FC = () => {
     const title = useTypedSelector((state: RootState) => state.books.title);
     const books = useTypedSelector((state: RootState) => state.books.books);
     const {loadScrollBooks} = useActions();
     const Books = books?.map(book => {
-        return getInfoBook(book);
+        return getInfoPreviewBook(book);
     });
 
     const loadScrollBooksWrapper = async () => {
@@ -56,4 +56,4 @@ const BookList: FC = () => {
     );
 };
 
-export default BookList;
+export default PreviewBookList;

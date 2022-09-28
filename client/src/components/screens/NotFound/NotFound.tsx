@@ -1,9 +1,9 @@
 import React from 'react';
-import Title from "../ui/Title/Title";
+import Title from "../../ui/Title/Title";
 import {useNavigate} from "react-router-dom";
-import {HOME_ROUTE} from "../../utils/constants/url";
+import {HOME_ROUTE} from "../../../utils/constants/url";
 import s from "./NotFound.module.scss";
-import Button from "../ui/Button/Button";
+import Button from "../../ui/Button/Button";
 
 
 const NotFound = () => {

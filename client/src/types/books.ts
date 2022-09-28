@@ -1,9 +1,9 @@
-import {IBook} from "./IBook";
+import {IPreviewBook} from "./IPreviewBook";
 
 
 export interface BooksState {
     title: string,
-    books: IBook[],
+    books: IPreviewBook[],
 }
 
 export enum BooksActionTypes {
@@ -15,14 +15,14 @@ export interface SetBooksAction {
     type: BooksActionTypes.SET_BOOKS,
     payload: {
         title: string,
-        books: IBook[],
+        books: IPreviewBook[],
     },
 }
 
 export interface AddBooksAction {
     type: BooksActionTypes.ADD_BOOKS,
     payload: {
-        books: IBook[],
+        books: IPreviewBook[],
     },
 }
 

@@ -1,6 +1,6 @@
 import React, {FC, PropsWithChildren} from 'react';
 import Header from "../Header/Header";
-import {GlobalLoader} from "../GlobalLoader/GlobalLoader";
+import {GlobalLoader} from "../ui/GlobalLoader/GlobalLoader";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {RootState} from "../../store";
 import Footer from "../Footer/Footer";

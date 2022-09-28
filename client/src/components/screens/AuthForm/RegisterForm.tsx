@@ -1,25 +1,24 @@
-import React, {SyntheticEvent, useRef, useState} from 'react'
-import useActions from "../../hooks/useActions";
-import {IRegistrationData} from "../../types/IRegistrationData";
-import useTogglePassword from "../../hooks/useTogglePassword";
+import React, {useState, FC, SyntheticEvent, useRef} from 'react';
+import {IErrorRegistration} from '../../../types/IErrorRegistration';
+import {handleChange} from '../../../utils/helpers';
+import TextField from '../../ui/TextField/TextField';
 import s from "./Auth.module.scss";
-import Title from "../ui/Title/Title";
-import TextField from "../ui/TextField/TextField";
-import {handleChange} from "../../utils/helpers";
-import PasswordIcon from "../PasswordIcon/PasswordIcon";
-import {Link} from "react-router-dom";
-import {HOME_ROUTE, REGISTRATION_ROUTE} from "../../utils/constants/url";
-import {ILoginData} from "../../types/ILoginData";
-import {IErrorLogin} from "../../types/IErrorLogin";
-import {useNavigate} from "react-router-dom";
-import Button from "../ui/Button/Button";
+import useActions from "../../../hooks/useActions";
+import Title from "../../ui/Title/Title";
+import {Link, useNavigate} from "react-router-dom";
+import {HOME_ROUTE, LOGIN_ROUTE} from "../../../utils/constants/url";
+import {IRegistrationData} from "../../../types/IRegistrationData";
+import useTogglePassword from "../../../hooks/useTogglePassword";
+import PasswordIcon from "../../PasswordIcon/PasswordIcon";
+import Button from "../../ui/Button/Button";
 
 
-const LoginForm = () => {
-    const {login} = useActions();
-    const [error, setError] = useState({} as IErrorLogin);
-    const [userData, setUserData] = useState<ILoginData>({
+const RegistrationForm: FC = () => {
+    const {registration} = useActions();
+    const [error, setError] = useState({} as IErrorRegistration);
+    const [userData, setUserData] = useState<IRegistrationData>({
         email: "",
+        nickname: "",
         password: "",
     });
     const {isVisible, type, changePassword} = useTogglePassword();
@@ -28,7 +27,7 @@ const LoginForm = () => {
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
-        await login(userData, setError);
+        await registration(userData, setError);
         navigate(HOME_ROUTE);
     }
 
@@ -37,10 +36,21 @@ const LoginForm = () => {
         <div className={s["wrapper"]}>
             <div className={s["form-wrapper"]}>
                 <div className={s["header"]}>
-                    <Title>Sign in</Title>
+                    <Title>Create account</Title>
                 </div>
 
                 <form onSubmit={submit}>
+                    <div className={s["text-field-wrapper"]}>
+                        <TextField
+                            label="Nickname"
+                            name="nickname"
+                            className={s["text-field"]}
+                            value={userData.nickname}
+                            errorMessage={error?.nickname}
+                            onChange={(e) => handleChange<IRegistrationData>(e, setUserData)}
+                        />
+                    </div>
+
                     <div className={s["text-field-wrapper"]}>
                         <TextField
                             label="Email"
@@ -64,16 +74,14 @@ const LoginForm = () => {
                             endIcon={<PasswordIcon isVisible={isVisible} changePassword={changePassword}/>}
                             onChange={(e) => handleChange<IRegistrationData>(e, setUserData)}
                         />
-
-                        <div className={s["error-message"]}>{error.incorrectData}</div>
                     </div>
 
-                    <Button type="submit" className={s["submit"]}>Sign in</Button>
-                    <span>Don't have an account yet? <Link to={REGISTRATION_ROUTE}> Create</Link></span>
+                    <Button type="submit" className={s["submit"]}>Create</Button>
+                    <span>Already have an account? <Link to={LOGIN_ROUTE}> Sign-In</Link></span>
                 </form>
             </div>
         </div>
     );
 }
 
-export default LoginForm;
+export default RegistrationForm;

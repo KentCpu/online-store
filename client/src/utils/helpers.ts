@@ -1,6 +1,9 @@
 import {ChangeEvent} from "react";
+import {IPreviewBook} from "../types/IPreviewBook";
+import {PreviewBookProps} from "../components/screens/PreviewBook/PreviewBook";
 import {IBook} from "../types/IBook";
-import {IBookProps} from "../components/Book/Book";
+import {IBookView} from "../components/screens/BookView/BookView";
+
 
 export const handleChange = <T>(event: ChangeEvent<HTMLInputElement>, setData: Function) => {
     setData((data: T) => {
@@ -12,7 +15,8 @@ export const getCurrentYear = () => {
     return new Date().getFullYear();
 }
 
-export const getInfoBook = (book: IBook): IBookProps => {
+
+export const getInfoPreviewBook = (book: IPreviewBook): PreviewBookProps  =>  {
     return {
         id: book.id,
         title: book.volumeInfo.title,
@@ -24,5 +28,18 @@ export const getInfoBook = (book: IBook): IBookProps => {
             :
             "Not in availability"
         ,
+    }
+}
+
+export const getInfoBook = (book: IBook): IBookView  =>  {
+    const shortInfo = getInfoPreviewBook(book);
+    return {
+        ...shortInfo,
+        description: book.volumeInfo.description,
+        pageCount: book.volumeInfo.pageCount,
+        language: book.volumeInfo.language,
+        publisher: book.volumeInfo.publisher,
+        publishedDate: new Date(book.volumeInfo.publishedDate).getFullYear().toString(),
+        imageLink: book.volumeInfo.imageLinks.small,
     }
 }

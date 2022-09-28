@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "./Header.module.scss";
 import Menu from "./Menu";
-import Logo from "../Logo/Logo";
+import Logo from "../ui/Logo/Logo";
 import SearchPanel from "../SearchPanel/SearchPanel";
 import useActions from "../../hooks/useActions";
 

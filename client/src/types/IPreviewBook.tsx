@@ -1,15 +1,11 @@
-export interface IBook {
+export interface IPreviewBook {
     id: string,
     volumeInfo: {
         title: string,
         authors: string[],
         imageLinks: {
-            smallThumbnail?: string,
+            smallThumbnail: string,
             thumbnail: string,
-            small: string,
-            medium: string,
-            large: string,
-            extraLarge: string,
         },
     },
     saleInfo: {

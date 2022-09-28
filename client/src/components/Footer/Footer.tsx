@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./Footer.module.scss";
-import Logo from "../Logo/Logo";
+import Logo from "../ui/Logo/Logo";
 import classNames from "classnames";
 import {getCurrentYear} from "../../utils/helpers";
 

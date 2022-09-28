@@ -1,11 +1,11 @@
-import {IBook} from "../../types/IBook";
+import {IPreviewBook} from "../../types/IPreviewBook";
 import {AddBooksAction, BooksActionTypes, SetBooksAction} from "../../types/books";
 import {AppDispatch} from "../index";
 import BookService from "../../services/BookService";
 
 export const BookActions = {
 
-    setBooks: (title: string, books: IBook[]): SetBooksAction => ({
+    setBooks: (title: string, books: IPreviewBook[]): SetBooksAction => ({
         type: BooksActionTypes.SET_BOOKS,
         payload: {
             title,
@@ -13,7 +13,7 @@ export const BookActions = {
         }
     }),
 
-    addBooks: (books: IBook[]): AddBooksAction => ({
+    addBooks: (books: IPreviewBook[]): AddBooksAction => ({
         type: BooksActionTypes.ADD_BOOKS,
         payload: {
             books,
@@ -22,7 +22,6 @@ export const BookActions = {
 
     findBooks: (title: string) => async (dispatch: AppDispatch) => {
         const foundBooks = await BookService.getBooks(title);
-        console.log(title)
         dispatch(BookActions.setBooks(title, foundBooks.data.items));
     },
 

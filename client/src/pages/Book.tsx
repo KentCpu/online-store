@@ -1,14 +1,13 @@
 import React from 'react';
+import BookView from "../components/screens/BookView/BookView";
 import Layout from "../components/Layout/Layout";
-import Home from "../components/screens/Home/Home";
 
-
-const Index = () => {
+const Book = () => {
     return (
         <Layout>
-            <Home/>
+            <BookView/>
         </Layout>
     );
 };
 
-export default Index;
+export default Book;

@@ -8,6 +8,7 @@ import s from "./BookView.module.scss";
 import Button from "../../ui/Button/Button";
 import Title from "../../ui/Title/Title";
 import classNames from "classnames";
+import NotFound from "../NotFound/NotFound";
 
 export interface IBookView extends PreviewBookProps {
     description: string,
@@ -22,12 +23,13 @@ const BookView = () => {
     const [isLoader, setIsLoader] = useState(false);
     const [book, setBook] = useState<IBookView>({} as IBookView);
 
+
     useEffect(() => {
         if (id) {
             setIsLoader(true);
             BookService.getBook(id)
-                .then(book =>  setBook(getInfoBook(book.data)))
-                .catch(e => console.log(e))
+                .then(book => setBook(getInfoBook(book.data)))
+                .catch(e => console.error(e))
                 .finally(() => setIsLoader(false));
         }
     }, []);
@@ -36,8 +38,8 @@ const BookView = () => {
         return <GlobalLoader/>
     }
 
-    if (!book) {
-        return null;
+    if (!Object.keys(book).length) {
+        return <NotFound/>
     }
 
 
@@ -51,14 +53,13 @@ const BookView = () => {
                 <div className={s["info"]}>
                     <h1 className={s["title"]}>{book.title}</h1>
                     <div className={s["characteristics"]}>
-                        <Title className={s["characteristics-title"]} headingLevels={"h3"}>Characteristics</Title>
+                        <Title className={s["characteristics__title"]} headingLevels={"h3"}>Characteristics</Title>
                         <p>Authors: {book.authors}</p>
                         <p>Publisher: {book.publisher}</p>
                         <p>Language: {book.language}</p>
                         <p>Publication date: {book.publishedDate}</p>
                         <p>Number of pages: {book.pageCount}</p>
                     </div>
-
 
                     <div className={s["trade"]}>
                         <p className={s["price"]}>{book.price}</p>
@@ -68,10 +69,8 @@ const BookView = () => {
             </div>
 
             <div className={s["body"]}>
-                <div>
-                    <h2>About the product</h2>
-                    <p>{book.description}</p>
-                </div>
+                <h2 className={s["body__title"]}>About the product</h2>
+                <p>{book.description}</p>
             </div>
         </div>
     );

@@ -11,7 +11,7 @@
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 
   @media (max-width: 765px) {
     flex-direction: column;
@@ -40,7 +40,7 @@
 
 .characteristics {
   margin-bottom: 40px;
-  &-title {
+  &__title {
     margin-bottom: 15px;
     font-size: 20px;
     font-weight: 600;
@@ -60,4 +60,8 @@
 .btn-buy {
   width: 200px;
   height: 45px;
+}
+
+.body__title {
+  margin-bottom: 8px;
 }

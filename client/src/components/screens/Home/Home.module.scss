@@ -1,12 +1,14 @@
+@import "../../../scss/mixins/rem";
+
 .home-container {
-  margin: 90px auto;
+  margin: rem(90) auto;
 }
 
 .search-wrapper {
-  margin-bottom: 35px;
+  margin-bottom: rem(35);
 }
 
 .loader-wrapper {
-  margin-top: 30px;
+  margin-top: rem(30);
   text-align: center;
 }

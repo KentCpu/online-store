@@ -1,9 +1,10 @@
+@import "../../scss/mixins/rem";
 
 .favorites {
   &__link {
     text-decoration: none;
     color: #fff;
-    font-size: 25px;
+    font-size: rem(25);
     transition: all 0.2s;
 
     &:hover {

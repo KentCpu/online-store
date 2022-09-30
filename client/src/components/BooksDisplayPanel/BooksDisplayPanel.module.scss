@@ -1,3 +1,5 @@
+@import "../../scss/mixins/rem";
+
 .icons {
   display: flex;
   align-items: center;
@@ -8,12 +10,12 @@
 }
 
 .icon {
-  font-size: 20px;
+  font-size: rem(20);
   background-color: #F2F2F2;
-  padding: 7px;
+  padding: rem(7);
   cursor: pointer;
-  margin-right: 15px;
-  border-radius: 5px;
+  margin-right: rem(15);
+  border-radius: rem(5);
 
   &_active {
     color: #fff;

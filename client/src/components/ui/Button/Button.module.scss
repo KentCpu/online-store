@@ -1,6 +1,8 @@
+@import "../../../scss/mixins/rem";
+
 .btn {
   color: #fff;
-  border-radius: 5px;
+  border-radius: rem(5);
   font-weight: 500;
   color: #fff;
   background-color: #7572f8;

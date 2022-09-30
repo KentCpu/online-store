@@ -1,8 +1,10 @@
+@import "../../../scss/mixins/rem";
+
 .book {
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
-  padding: 15px;
+  border-radius: rem(5);
+  padding: rem(15);
 
   &_row {
     flex-direction: row;
@@ -11,16 +13,16 @@
   &-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 15px;
-    row-gap: 35px;
-    margin-bottom: 15px;
+    column-gap: rem(15);
+    row-gap: rem(35);
+    margin-bottom: rem(15);
 
     @media (max-width: 1024px) {
       grid-template-columns: repeat(3, 1fr);
     }
 
     @media (max-width: 768px) {
-      row-gap: 20px;
+      row-gap: rem(20);
       grid-template-columns: repeat(2, 1fr);
     }
 
@@ -31,23 +33,23 @@
 
     &_row {
       grid-template-columns: 1fr;
-      row-gap: 30px;
+      row-gap: rem(30);
       column-gap: 0;
     }
   }
 
   &:hover {
-    box-shadow: 0 0 20px rgb(0 0 0 / 12%), 0 0 8px rgb(0 0 0 / 4%);
+    box-shadow: 0 0 rem(20) rgb(0 0 0 / 12%), 0 0 rem(8) rgb(0 0 0 / 4%);
   }
 }
 
 .books-view {
-  margin-bottom: 20px;
+  margin-bottom: rem(20);
 }
 
 .cover {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: rem(15);
 
   &-link {
     display: block;
@@ -56,8 +58,8 @@
   }
 
   &-img {
-    width: 130px;
-    height: 185px;
+    width: rem(130);
+    height: rem(185);
     object-fit: cover;
   }
 }
@@ -68,42 +70,42 @@
   height: 100%;
 
   &_row {
-    margin-left: 30px;
+    margin-left: rem(30);
   }
 }
 
 .info {
   flex: 1 0 auto;
-  margin-bottom: 10px;
+  margin-bottom: rem(10);
 }
 
 .title {
   display: block;
   text-decoration: none;
-  margin-bottom: 7px;
+  margin-bottom: rem(7);
   color: black;
 }
 
 .author {
   color: #737373;
-  font-size: 14px;
-  margin-bottom: 15px;
+  font-size: rem(14);
+  margin-bottom: rem(15);
 }
 
 .price {
   font-weight: 500;
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: rem(18);
+  margin-bottom: rem(15);
 }
 
 .description {
-  font-size: 14px;
-  margin-bottom: 15px;
+  font-size: rem(14);
+  margin-bottom: rem(15);
 }
 
 .btn-buy {
-  width: 160px;
-  height: 40px;
+  width: rem(160);
+  height: rem(40);
 }
 
 .scroll-loader {

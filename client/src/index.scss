@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap');
 @import "scss/normalize.css";
+@import "scss/mixins/rem";
 $baseFontSize: 16px;
 
 html {
@@ -31,17 +32,11 @@ body {
 }
 
 .container {
-  max-width: 1300px;
+  max-width: rem(1300);
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 rem(15);
 }
 
 .main {
   flex: 1 0 auto;
 }
-
-
-
-
-
-

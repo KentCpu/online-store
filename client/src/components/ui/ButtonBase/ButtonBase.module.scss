@@ -1,3 +1,5 @@
+@import "../../../scss/mixins/rem";
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -5,7 +7,7 @@
   overflow: hidden;
   border: none;
   cursor: pointer;
-  padding: 0 5px;
+  padding: 0 rem(5);
 
   &[disabled] {
     pointer-events: none;

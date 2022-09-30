@@ -1,3 +1,5 @@
+@import "../../scss/mixins/rem";
+
 .footer {
   background-color: #20232A;
   &__wrapper {
@@ -5,17 +7,17 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    min-height: 60px;
+    min-height: rem(60);
     
     @media (max-width: 700px) {
       flex-direction: column;
-      padding: 20px 0;
+      padding: rem(20) 0;
     }
   }
 
   &__logo {
     @media (max-width: 700px) {
-      margin-bottom: 12px;
+      margin-bottom: rem(12);
     }
   }
 }

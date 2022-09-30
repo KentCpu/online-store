@@ -1,6 +1,6 @@
 import React from "react";
-import Login from "../../pages/Login/Login";
-import Registration from "../../pages/Registration/Registration";
+import Login from "../../pages/Login";
+import Registration from "../../pages/Registration";
 import {BOOK_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "./url";
 import Page404 from "../../pages/Page404";
 

@@ -1,3 +1,5 @@
+@import "../../../scss/mixins/rem";
+
 .section {
   height: 100vh;
   display: flex;
@@ -11,9 +13,9 @@
 }
 
 .btn {
-  padding: 10px 25px;
+  padding: rem(10) rem(25);
 }
 
 .desc {
-  margin: 20px 0;
+  margin: rem(20) 0;
 }

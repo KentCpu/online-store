@@ -1,18 +1,19 @@
+@import "../../../scss/mixins/rem";
 
 .title {
-  padding-left: 8px;
+  padding-left: rem(8);
 }
 
 .link {
   color: #fff;
   text-decoration: none;
-  font-size: 28px;
+  font-size: rem(28);
 
   @media (max-width: 768px) {
-    font-size: 25px;
+    font-size: rem(25);
   }
 
   @media (max-width: 425px) {
-    font-size: 20px;
+    font-size: rem(20);
   }
 }

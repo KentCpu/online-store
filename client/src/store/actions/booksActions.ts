@@ -1,11 +1,11 @@
-import {IPreviewBook} from "../../types/IPreviewBook";
+import {IPreviewBookResponse} from "../../types/IPreviewBookResponse";
 import {AddBooksAction, BooksActionTypes, SetBooksAction} from "../../types/books";
 import {AppDispatch} from "../index";
 import BookService from "../../services/BookService";
 
 export const BookActions = {
 
-    setBooks: (title: string, books: IPreviewBook[]): SetBooksAction => ({
+    setBooks: (title: string, books: IPreviewBookResponse[]): SetBooksAction => ({
         type: BooksActionTypes.SET_BOOKS,
         payload: {
             title,
@@ -13,7 +13,7 @@ export const BookActions = {
         }
     }),
 
-    addBooks: (books: IPreviewBook[]): AddBooksAction => ({
+    addBooks: (books: IPreviewBookResponse[]): AddBooksAction => ({
         type: BooksActionTypes.ADD_BOOKS,
         payload: {
             books,

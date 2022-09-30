@@ -1,13 +1,13 @@
 import React from 'react';
-import BookView from "../components/screens/BookView/BookView";
 import Layout from "../components/Layout/Layout";
+import Book from "../components/screens/Book/Book";
 
-const Book = () => {
+const BookPage = () => {
     return (
         <Layout>
-            <BookView/>
+            <Book/>
         </Layout>
     );
 };
 
-export default Book;
+export default BookPage;

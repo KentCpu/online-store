@@ -2,15 +2,16 @@ import React, {useEffect, useState} from 'react';
 import BookService from "../../../services/BookService";
 import {useParams} from "react-router-dom";
 import {GlobalLoader} from "../../ui/GlobalLoader/GlobalLoader";
-import {PreviewBookProps} from "../PreviewBook/PreviewBook";
-import {getInfoBook} from "../../../utils/helpers";
-import s from "./BookView.module.scss";
+import s from "./Book.module.scss";
 import Button from "../../ui/Button/Button";
 import Title from "../../ui/Title/Title";
 import classNames from "classnames";
 import NotFound from "../NotFound/NotFound";
+import {IPreviewBook} from "../PreviewBooks/PreviewBook";
+import {getInfoBook} from "../../../utils/helpers";
 
-export interface IBookView extends PreviewBookProps {
+
+export interface IBook extends IPreviewBook {
     description: string,
     language: string,
     pageCount: number,
@@ -18,10 +19,10 @@ export interface IBookView extends PreviewBookProps {
     publishedDate: string,
 }
 
-const BookView = () => {
+const Book = () => {
     const {id} = useParams();
     const [isLoader, setIsLoader] = useState(false);
-    const [book, setBook] = useState<IBookView>({} as IBookView);
+    const [book, setBook] = useState<IBook>({} as IBook);
 
 
     useEffect(() => {
@@ -61,10 +62,8 @@ const BookView = () => {
                         <p>Number of pages: {book.pageCount}</p>
                     </div>
 
-                    <div className={s["trade"]}>
-                        <p className={s["price"]}>{book.price}</p>
-                        <Button disabled={!book.isAvailable} className={s["btn-buy"]}>Add to Basket</Button>
-                    </div>
+                    <p className={s["price"]}>{book.price}</p>
+                    <Button disabled={!book.isAvailable} className={s["btn-buy"]}>Add to Basket</Button>
                 </div>
             </div>
 
@@ -76,4 +75,4 @@ const BookView = () => {
     );
 };
 
-export default BookView;
+export default Book;

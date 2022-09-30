@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Home.module.scss";
-import PreviewBookList from "../PreviewBook/PreviewBookList";
+import PreviewBooks from "../PreviewBooks/PreviewBooks";
 import classNames from "classnames";
 
 
@@ -9,7 +9,7 @@ const Home = () => {
 
     return (
         <div className={classNames(s["home-container"], "container")}>
-            <PreviewBookList/>
+            <PreviewBooks/>
         </div>
     );
 };

@@ -1,100 +1,109 @@
 .book {
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
+  border-radius: 5px;
   padding: 15px;
+
+  &_row {
+    flex-direction: row;
+  }
 
   &-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 15px;
-    row-gap: 30px;
+    row-gap: 35px;
     margin-bottom: 15px;
 
-    @media (max-width:1024px) {
-      row-gap: 10px;
+    @media (max-width: 1024px) {
       grid-template-columns: repeat(3, 1fr);
     }
 
-    @media (max-width:768px) {
-      row-gap: 5px;
+    @media (max-width: 768px) {
+      row-gap: 20px;
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width:500px) {
-      row-gap: 25px;
+    @media (max-width: 500px) {
       column-gap: 0;
       grid-template-columns: 1fr;
     }
-  }
 
+    &_row {
+      grid-template-columns: 1fr;
+      row-gap: 30px;
+      column-gap: 0;
+    }
+  }
 
   &:hover {
     box-shadow: 0 0 20px rgb(0 0 0 / 12%), 0 0 8px rgb(0 0 0 / 4%);
   }
+}
 
-  @media (max-width:1024px) {
-    padding: 10px;
-  }
-
-  @media (max-width:500px) {
-    padding: 5px;
-  }
+.books-view {
+  margin-bottom: 20px;
 }
 
 .cover {
-  position: relative;
   text-align: center;
   margin-bottom: 15px;
-  height: 185px;
 
   &-link {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: block;
     width: 100%;
     height: 100%;
   }
 
   &-img {
-    width: 125px;
-    height: 100%;
+    width: 130px;
+    height: 185px;
     object-fit: cover;
   }
 }
 
-a {
-  text-decoration: none;
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &_row {
+    margin-left: 30px;
+  }
 }
 
 .info {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
   flex: 1 0 auto;
+  margin-bottom: 10px;
 }
 
 .title {
-  margin-bottom: 8px;
+  display: block;
+  text-decoration: none;
+  margin-bottom: 7px;
   color: black;
 }
 
 .author {
   color: #737373;
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .price {
   font-weight: 500;
   font-size: 18px;
   margin-bottom: 15px;
-  margin-top: auto;
+}
+
+.description {
+  font-size: 14px;
+  margin-bottom: 15px;
 }
 
 .btn-buy {
+  width: 160px;
   height: 40px;
-  width: 100%;
 }
 
 .scroll-loader {

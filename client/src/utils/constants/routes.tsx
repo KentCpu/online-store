@@ -5,7 +5,7 @@ import {BOOK_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "./url";
 import Page404 from "../../pages/Page404";
 
 import Index from "../../pages";
-import Book from "../../pages/Book";
+import BookPage from "../../pages/BookPage";
 
 
 export interface IRoute {
@@ -36,7 +36,7 @@ export const publicRoutes: IRoute[] = [
 
     {
         path: BOOK_ROUTE,
-        element: <Book/>,
+        element: <BookPage/>,
     }
 ];
 
@@ -54,7 +54,7 @@ export const privateRoutes: IRoute[] = [
 
     {
         path: BOOK_ROUTE,
-        element: <Book/>,
+        element: <BookPage/>,
     }
 
 ];

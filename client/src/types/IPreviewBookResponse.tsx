@@ -1,8 +1,9 @@
-export interface IPreviewBook {
+export interface IPreviewBookResponse {
     id: string,
     volumeInfo: {
         title: string,
         authors: string[],
+        description: string,
         imageLinks: {
             smallThumbnail: string,
             thumbnail: string,

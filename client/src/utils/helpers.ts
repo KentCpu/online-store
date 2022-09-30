@@ -1,8 +1,8 @@
 import {ChangeEvent} from "react";
-import {IPreviewBook} from "../types/IPreviewBook";
-import {PreviewBookProps} from "../components/screens/PreviewBook/PreviewBook";
-import {IBook} from "../types/IBook";
-import {IBookView} from "../components/screens/BookView/BookView";
+import {IPreviewBookResponse} from "../types/IPreviewBookResponse";
+import {IPreviewBook} from "../components/screens/PreviewBooks/PreviewBook";
+import {IBookResponse} from "../types/IBookResponse";
+import {IBook} from "../components/screens/Book/Book";
 
 
 export const handleChange = <T>(event: ChangeEvent<HTMLInputElement>, setData: Function) => {
@@ -15,14 +15,14 @@ export const getCurrentYear = () => {
     return new Date().getFullYear();
 }
 
-
-export const getInfoPreviewBook = (book: IPreviewBook): PreviewBookProps  =>  {
+export const getInfoPreviewBook = (book: IPreviewBookResponse): IPreviewBook  =>  {
     return {
         id: book?.id,
         title: book.volumeInfo?.title,
         authors: book.volumeInfo?.authors ? book.volumeInfo.authors.join(", ") : "The author is not specified",
         imageLink: book.volumeInfo.imageLinks?.smallThumbnail,
         isAvailable: book.saleInfo?.listPrice ? true: false,
+        description: book.volumeInfo?.description,
         price: book.saleInfo?.listPrice?
             `${Math.round(book.saleInfo.listPrice.amount)} ${book.saleInfo.listPrice.currencyCode}`
             :
@@ -31,15 +31,13 @@ export const getInfoPreviewBook = (book: IPreviewBook): PreviewBookProps  =>  {
     }
 }
 
-export const getInfoBook = (book: IBook): IBookView  =>  {
+export const getInfoBook = (book: IBookResponse): IBook  =>  {
     const shortInfo = getInfoPreviewBook(book);
     return {
         ...shortInfo,
-        description: book.volumeInfo?.description,
         pageCount: book.volumeInfo?.pageCount,
         language: book.volumeInfo?.language,
         publisher: book.volumeInfo?.publisher,
         publishedDate: new Date(book.volumeInfo?.publishedDate).getFullYear().toString(),
-        imageLink: book.volumeInfo?.imageLinks?.small,
     }
 }

@@ -1,6 +1,6 @@
-import {IPreviewBook} from "./IPreviewBook";
+import {IPreviewBookResponse} from "./IPreviewBookResponse";
 
-export interface IBook extends IPreviewBook{
+export interface IBookResponse extends IPreviewBookResponse{
     volumeInfo: {
         title: string,
         authors: string[],

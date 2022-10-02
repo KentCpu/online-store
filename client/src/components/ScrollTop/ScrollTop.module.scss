@@ -1,0 +1,20 @@
+@import "../../scss/mixins/rem";
+
+.scroll-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(40);
+  height: rem(40);
+  position: fixed;
+  right: rem(10);
+  bottom: rem(30);
+  background-color: black;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.scroll-icon {
+  font-size: rem(20);
+  color: #fff;
+}

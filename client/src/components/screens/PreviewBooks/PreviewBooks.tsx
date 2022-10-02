@@ -10,6 +10,7 @@ import useActions from "../../../hooks/useActions";
 import BooksDisplayPanel from "../../BooksDisplayPanel/BooksDisplayPanel";
 import classNames from "classnames";
 import {BooksViewType} from "../../../types/booksView";
+import ScrollTop from "../../ScrollTop/ScrollTop";
 
 
 const PreviewBooks: FC = () => {
@@ -58,6 +59,7 @@ const PreviewBooks: FC = () => {
                                 <ScrollLoader downloadData={loadScrollBooksWrapper}/>
                             </div>
                         }
+                        <ScrollTop/>
                     </>
                     :
                     <Title headingLevels={"h2"}>We didn't find anything on your request!</Title>

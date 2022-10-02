@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {faList} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTableCells} from "@fortawesome/free-solid-svg-icons/faTableCells";
@@ -35,4 +35,4 @@ const BooksDisplayPanel = () => {
     );
 };
 
-export default BooksDisplayPanel;
+export default memo(BooksDisplayPanel);

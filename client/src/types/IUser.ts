@@ -1,7 +1,7 @@
 export interface IUser {
-    id: string;
-    email: string;
-    nickname: string;
+    readonly id: string;
+    readonly email: string;
+    readonly nickname: string;
     isActivated: boolean;
+    avatar?: string;
 }
-

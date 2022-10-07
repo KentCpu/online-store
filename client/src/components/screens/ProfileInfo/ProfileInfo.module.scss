@@ -1,0 +1,42 @@
+@import "../../../scss/mixins/rem";
+
+.profile-container {
+  margin: rem(60) auto;
+
+  @media (max-width: 768px) {
+    margin: rem(35) auto;
+  }
+}
+
+.profile-form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.profile-info {
+  @media (max-width: 768px) {
+    order: 1;
+  }
+}
+
+.input {
+  width: rem(350);
+  margin-bottom: rem(25);
+  padding: rem(8) rem(10);
+  border-radius: rem(5);
+  border: rem(1) solid #ccc;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.save-btn {
+  padding: 0 rem(30);
+  height: rem(40);
+}

@@ -1,4 +1,4 @@
-import React, {ChangeEvent, forwardRef, InputHTMLAttributes, useEffect, useRef} from 'react';
+import React, { ChangeEvent, forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import s from "./TextField.module.scss";
 import useIsMount from "../../../hooks/useIsMount";
@@ -13,13 +13,13 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
-    const {label, placeholder, name, type = "text", value, errorMessage, onChange, className, endIcon} = props;
+    const { label, accept, placeholder, name, type = "text", value, disabled, errorMessage, onChange, className, endIcon } = props;
     const isMount = useIsMount();
     const internalRef = useRef<HTMLInputElement>(null);
     React.useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(ref, () => internalRef.current);
 
     useEffect(() => {
-        if(isMount) {
+        if (isMount) {
             internalRef?.current?.focus();
         }
     }, [type]);
@@ -36,6 +36,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
                     value={value}
                     onChange={onChange}
                     placeholder={placeholder}
+                    disabled={disabled}
+                    accept={accept}
                     className={classNames(s.input, className)}
                 />
                 {endIcon}

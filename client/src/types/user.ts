@@ -1,14 +1,15 @@
-import {IUser} from './IUser';
+import { IUser } from './IUser';
 
 
 export enum UserActionTypes {
     SET_USER = "SET_USER",
     SET_LOADING = "SET_LOADING",
+    SET_AUTH = "SET_AUTH",
 }
 
 
 export interface UserState {
-    user: IUser | null,
+    userData: IUser | null,
     isAuth: boolean,
     isLoading: boolean,
 }
@@ -21,10 +22,13 @@ export interface SetLoadingAction {
 export interface SetUserAction {
     type: UserActionTypes.SET_USER,
     payload: {
-        user: IUser | null,
-        isAuth: boolean,
+        userData: IUser | null,
     }
 }
 
+export interface SetAuthAction {
+    type: UserActionTypes.SET_AUTH,
+    payload: boolean,
+}
 
-export type UserAction = SetUserAction | SetLoadingAction ;
+export type UserAction = SetUserAction | SetLoadingAction | SetAuthAction;

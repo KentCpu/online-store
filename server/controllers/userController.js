@@ -1,6 +1,4 @@
 const UserService = require("../services/userService");
-const uuid = require("uuid");
-const path = require("path");
 
 
 class UserController {
@@ -10,14 +8,9 @@ class UserController {
             const userData = await UserService.registration(email, password, nickname);
             res.cookie('refreshToken', userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
             return res.json(userData);
-
-            // const { img } = req.files;
-            // let fileName = uuid.v4() + ".jpg";
-            // img.mv(path.resolve(__dirname, "..", "static", fileName));
         } catch (e) {
             next(e);
         }
-
     }
 
     async login(req, res, next) {
@@ -62,7 +55,47 @@ class UserController {
         } catch (e) {
             next(e);
         }
+    }
 
+    async uploadAvatar(req, res, next) {
+        try {
+            const id = req.body.id;
+            const newAvatar = req.files.newAvatar;
+            const userData = await UserService.uploadAvatar(id, newAvatar);
+            return res.json(userData);
+        } catch (e) {
+            next(e);
+        }
+
+    }
+
+    async deleteAvatar(req, res, next) {
+        try {
+            const id = req.params.id;
+            const dataUser = await UserService.deleteAvatar(id);
+            return res.json(dataUser);
+        } catch (e) {
+            next(e);
+        }
+    }
+
+    async getUserData(req, res, next) {
+        try {
+            const id = req.params.id;
+            const dataUser = await UserService.getUserData(id);
+            return res.json(dataUser);
+        } catch (e) {
+            next(e);
+        }
+    }
+
+    async saveUserData(req, next) {
+        try {
+            const { id, data } = req.body;
+            await UserService.savePersonalUserData(id, data);
+        } catch (e) {
+            next(e);
+        }
     }
 }
 

@@ -8,7 +8,7 @@ import {PROFILE_ROUTE} from "../../utils/constants/url";
 import s from "./Header.module.scss";
 
 const Profile = () => {
-    const isAuth = useTypedSelector((state: RootState) => state?.user.isAuth);
+    const isAuth = useTypedSelector(state => state?.user.isAuth);
 
     if(!isAuth) {
         return <></>;

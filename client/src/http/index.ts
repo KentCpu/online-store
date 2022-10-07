@@ -1,7 +1,8 @@
+import { SERVER_URL } from './../utils/constants/url';
 import axios from "axios";
-import AuthService from "../services/AuthService";
+import UserService from "../services/UserService";
 
-export const API_URL = "http://localhost:5000/api";
+export const API_URL = `${SERVER_URL}/api`;
 
 const $api = axios.create({
     withCredentials: true,
@@ -18,14 +19,14 @@ $api.interceptors.response.use(config => {
     return config;
 }, (async (error) => {
     const originalRequest = error.config;
-    if(error.response.status === 401 && error.config && !originalRequest._isRetry) {
+    if (error.response.status === 401 && error.config && !originalRequest._isRetry) {
         originalRequest._isRetry = true;
         try {
-            const response = await AuthService.checkAuth();
+            const response = await UserService.checkAuth();
             console.log(response.data)
             localStorage.setItem("token", response.data.accessToken);
             return $api.request(originalRequest);
-        }catch (e) {
+        } catch (e) {
             console.log("Не авторизован");
         }
     }

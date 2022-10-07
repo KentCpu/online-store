@@ -2,7 +2,7 @@ import React from 'react';
 import LoginForm from "../components/screens/AuthForm/LoginForm";
 
 
-export const Login: React.FC = () => {
+export const LoginPage: React.FC = () => {
 
     return (
         <>
@@ -11,4 +11,4 @@ export const Login: React.FC = () => {
     )
 }
 
-export default Login;
+export default LoginPage;

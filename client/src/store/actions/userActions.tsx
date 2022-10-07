@@ -1,11 +1,12 @@
-import AuthService from "../../services/AuthService";
-import {IErrorRegistration} from "../../types/IErrorRegistration";
-import {IUser} from "../../types/IUser";
-import {SetUserAction, SetLoadingAction, UserActionTypes} from "../../types/user";
-import {IErrorLogin} from "../../types/IErrorLogin";
-import {AppDispatch} from "../index";
-import {IRegistrationData} from "../../types/IRegistrationData";
-import {ILoginData} from "../../types/ILoginData";
+import UserService from "../../services/UserService";
+import { IErrorRegistration } from "../../types/IErrorRegistration";
+import { IUser } from "../../types/IUser";
+import { SetUserAction, SetLoadingAction, SetAuthAction, UserActionTypes } from "../../types/user";
+import { IErrorLogin } from "../../types/IErrorLogin";
+import { AppDispatch } from "../index";
+import { IRegistrationData } from "../../types/IRegistrationData";
+import { ILoginData } from "../../types/ILoginData";
+
 
 interface IError {
     msg: string;
@@ -16,18 +17,21 @@ type TSetErrRegistration = (error: IErrorRegistration) => void;
 type TSetErrLogin = (error: IErrorLogin) => void;
 
 export const UserActions = {
-    setUser: (user: IUser | null, isAuth: boolean): SetUserAction => ({
+    setAuth: (isAuth: boolean): SetAuthAction => ({ type: UserActionTypes.SET_AUTH, payload: isAuth }),
+    setIsLoading: (isLoading: boolean): SetLoadingAction => ({ type: UserActionTypes.SET_LOADING, payload: isLoading }),
+    setUser: (userData: IUser | null): SetUserAction => ({
         type: UserActionTypes.SET_USER,
-        payload: {user, isAuth}
+        payload: { userData }
     }),
-    setIsLoading: (isLoading: boolean): SetLoadingAction => ({type: UserActionTypes.SET_LOADING, payload: isLoading}),
 
-    registration: ({email, nickname, password}: IRegistrationData, setError: TSetErrRegistration) => async (dispatch: AppDispatch) => {
+
+    registration: ({ email, nickname, password }: IRegistrationData, setError: TSetErrRegistration) => async (dispatch: AppDispatch) => {
         try {
-            const response = await AuthService.registration({email, password, nickname});
+            const response = await UserService.registration({ email, password, nickname });
             localStorage.setItem("token", response.data.accessToken);
             setError({});
-            dispatch(UserActions.setUser(response.data.user, true));
+            dispatch(UserActions.setUser(response.data.user));
+            dispatch(UserActions.setAuth(true));
         } catch (e: any) {
             const possibleError: IError[] = e.response.data.errors;
             if (possibleError.length !== 0) {
@@ -41,12 +45,13 @@ export const UserActions = {
         }
     },
 
-    login: ({email, password}: ILoginData, setError: TSetErrLogin) => async (dispatch: AppDispatch) => {
+    login: ({ email, password }: ILoginData, setError: TSetErrLogin) => async (dispatch: AppDispatch) => {
         try {
-            const response = await AuthService.login({email, password});
+            const response = await UserService.login({ email, password });
             localStorage.setItem("token", response.data.accessToken);
             setError({});
-            dispatch(UserActions.setUser(response.data.user, true));
+            dispatch(UserActions.setUser(response.data.user));
+            dispatch(UserActions.setAuth(true));
         } catch (e: any) {
             const possibleError: IError[] = e.response.data.errors;
             if (possibleError.length !== 0) {
@@ -63,11 +68,12 @@ export const UserActions = {
     logout: () => async (dispatch: AppDispatch) => {
         try {
             dispatch(UserActions.setIsLoading(true));
-            await AuthService.logout();
+            await UserService.logout();
             localStorage.removeItem("token");
-            dispatch(UserActions.setUser(null, false));
-        } catch (e: any) {
-            console.log(e);
+            dispatch(UserActions.setAuth(false));
+            dispatch(UserActions.setUser(null));
+        } catch (e) {
+            console.error(e);
         } finally {
             dispatch(UserActions.setIsLoading(false));
         }
@@ -76,13 +82,33 @@ export const UserActions = {
     checkAuth: () => async (dispatch: AppDispatch) => {
         try {
             dispatch(UserActions.setIsLoading(true));
-            const response = await AuthService.checkAuth();
-            dispatch(UserActions.setUser(response.data.user, true));
+            const response = await UserService.checkAuth();
             localStorage.setItem("token", response.data.accessToken);
-        } catch (e: any) {
-            console.log(e)
+            dispatch(UserActions.setUser(response.data.user));
+            dispatch(UserActions.setAuth(true));
+        } catch (e) {
+            console.error(e)
         } finally {
             dispatch(UserActions.setIsLoading(false));
+        }
+    },
+
+    uploadAvatar: (newAvatar: FormData) => async (dispatch: AppDispatch) => {
+        try {
+            const response = await UserService.uploadAvatar(newAvatar);
+            dispatch(UserActions.setUser(response.data));
+        } catch (e) {
+            console.error(e)
+        }
+    },
+
+
+    deleteAvatar: (id: string) => async (dispatch: AppDispatch) => {
+        try {
+            const response = await UserService.deleteAvatar(id);
+            dispatch(UserActions.setUser(response.data));
+        } catch (e) {
+            console.error(e)
         }
     }
 }

@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import Book from "./PreviewBook";
 import s from "./PreviewBook.module.scss";
 import {getInfoPreviewBook} from "../../../utils/helpers";
@@ -19,25 +19,24 @@ const PreviewBooks: FC = () => {
     const viewType = useTypedSelector((state: RootState) => state.booksView.viewType);
     const {loadScrollBooks} = useActions();
     const Books = books?.map(book => getInfoPreviewBook(book));
-
+ 
     const loadScrollBooksWrapper = async () => {
         await loadScrollBooks(title, Books?.length);
     }
 
-
+    
     return (
         <>
+            <div className={s["books-view"]}>
+                <BooksDisplayPanel/>
+            </div>
             {
                 Books ?
-                    <>
-                        <div className={s["books-view"]}>
-                            <BooksDisplayPanel/>
-                        </div>
+                    <>  
                         <div className={
                             classNames(
                                 s["book-container"],
-                                viewType === BooksViewType.ROW_VIEW && s["book-container_row"])
-                        }>
+                                viewType === BooksViewType.ROW_VIEW && s["book-container_row"])}>
                             {
                                 Books.map((book, index) => {
                                     return <Book
@@ -50,7 +49,8 @@ const PreviewBooks: FC = () => {
                                         imageLink={book.imageLink}
                                         description={book.description}
                                     />
-                                })}
+                                })
+                            }
                         </div>
                         {
                             books.length > 0

@@ -1,11 +1,11 @@
 import React from "react";
-import Login from "../../pages/Login";
-import Registration from "../../pages/Registration";
-import {BOOK_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE} from "./url";
+import LoginPage from "../../pages/LoginPage";
+import RegistrationPage from "../../pages/RegistrationPage";
+import {BOOK_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE} from "./url";
 import Page404 from "../../pages/Page404";
-
-import Index from "../../pages";
+import {HomePage} from "../../pages/HomePage";
 import BookPage from "../../pages/BookPage";
+import { ProfilePage } from "../../pages/ProfilePage";
 
 
 export interface IRoute {
@@ -21,17 +21,17 @@ export const publicRoutes: IRoute[] = [
 
     {
         path: LOGIN_ROUTE,
-        element: <Login/>,
+        element: <LoginPage/>,
     },
 
     {
         path: REGISTRATION_ROUTE,
-        element: <Registration/>,
+        element: <RegistrationPage/>,
     },
 
     {
         path: HOME_ROUTE,
-        element: <Index/>,
+        element: <HomePage/>,
     },
 
     {
@@ -49,12 +49,16 @@ export const privateRoutes: IRoute[] = [
 
     {
         path: HOME_ROUTE,
-        element: <Index/>,
+        element: <HomePage/>,
+    },
+
+    {
+        path: PROFILE_ROUTE,
+        element: <ProfilePage/>,
     },
 
     {
         path: BOOK_ROUTE,
         element: <BookPage/>,
     }
-
 ];

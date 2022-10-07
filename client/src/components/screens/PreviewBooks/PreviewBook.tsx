@@ -1,4 +1,4 @@
-import React, {FC, memo} from 'react';
+import {FC, memo} from 'react';
 import s from "./PreviewBook.module.scss";
 import {Link, NavLink} from "react-router-dom";
 import Button from "../../ui/Button/Button";
@@ -38,7 +38,6 @@ const PreviewBook: FC<IPreviewBook> = ({id, title, authors, imageLink, price, is
                         isRowView && <p className={s["description"]}>{description}</p>
                     }
                 </div>
-
                 <p className={s["price"]}>{price}</p>
                 <Button disabled={!isAvailable} className={s["btn-buy"]}>Add to Basket</Button>
             </div>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import BookService from "../../../services/BookService";
 import {useParams} from "react-router-dom";
 import {GlobalLoader} from "../../ui/GlobalLoader/GlobalLoader";

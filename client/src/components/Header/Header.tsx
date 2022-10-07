@@ -1,4 +1,3 @@
-import React from 'react';
 import s from "./Header.module.scss";
 import Menu from "./Menu";
 import Logo from "../ui/Logo/Logo";

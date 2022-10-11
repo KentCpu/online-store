@@ -1,15 +1,15 @@
-import  {AxiosResponse} from "axios";
+import { IBook } from './../components/screens/Book/Book';
+import { IPreviewBook } from './../components/screens/PreviewBooks/PreviewBook';
+import { AxiosResponse } from "axios";
 import $api from "../http";
-import {IPreviewBookResponse} from "../types/IPreviewBookResponse";
-import {IBookResponse} from "../types/IBookResponse";
 
 
 export default class BookService {
-    static async getBooks(title: string, startIndex = 0): Promise<AxiosResponse> {
-        return  $api.get<IPreviewBookResponse[]>(`/book/getBooks/${title}/${startIndex}`);
+    static async getBooks(title: string, startIndex = 0): Promise<AxiosResponse<IPreviewBook[]>> {
+        return $api.get<IPreviewBook[]>(`/book/getBooks/${title}/${startIndex}`);
     }
 
-    static async getBook(id: string): Promise<AxiosResponse> {
-        return  $api.get<IBookResponse>(`/book/getBooks/${id}`);
+    static async getBook(id: string): Promise<AxiosResponse<IBook>> {
+        return $api.get<IBook>(`/book/getBooks/${id}`);
     }
 }

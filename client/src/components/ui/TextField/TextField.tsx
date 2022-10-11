@@ -1,7 +1,7 @@
 import React, { ChangeEvent, forwardRef, InputHTMLAttributes, useEffect, useRef } from 'react';
 import classNames from 'classnames';
 import s from "./TextField.module.scss";
-import useIsMount from "../../../hooks/useIsMount";
+import { useIsFirstRender } from "../../../hooks/useIsFirstRender";
 
 
 export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -14,12 +14,12 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
     const { label, accept, placeholder, name, type = "text", value, disabled, errorMessage, onChange, className, endIcon } = props;
-    const isMount = useIsMount();
+    const isFirstRender = useIsFirstRender();
     const internalRef = useRef<HTMLInputElement>(null);
     React.useImperativeHandle<HTMLInputElement | null, HTMLInputElement | null>(ref, () => internalRef.current);
 
     useEffect(() => {
-        if (isMount) {
+        if (!isFirstRender) {
             internalRef?.current?.focus();
         }
     }, [type]);

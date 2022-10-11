@@ -1,10 +1,8 @@
-import {UserActions} from "./userActions";
-import {BookActions} from "./booksActions";
-import {BooksViewAction} from "./booksViewAction";
+import { BookActions } from "./booksAction";
+import { UserActions } from "./userActions";
 
 
 export const actions = {
     ...UserActions,
     ...BookActions,
-    ...BooksViewAction,
 }

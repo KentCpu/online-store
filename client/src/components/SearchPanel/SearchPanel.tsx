@@ -1,4 +1,4 @@
-import React, {FC, memo, useState} from 'react';
+import {FC, memo, useState} from 'react';
 import TextField from "../ui/TextField/TextField";
 import s from "./SearchPanel.module.scss";
 import {faMagnifyingGlass} from "@fortawesome/free-solid-svg-icons/faMagnifyingGlass";
@@ -8,7 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 interface SearchPanel {
     label?: string;
     placeholder?: string;
-    onSubmit: any;
+    onSubmit: Function;
 }
 
 const SearchPanel: FC<SearchPanel> = ({onSubmit}) => {

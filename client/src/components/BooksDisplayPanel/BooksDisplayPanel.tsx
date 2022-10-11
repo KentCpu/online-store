@@ -1,18 +1,17 @@
-import React, {memo} from 'react';
-import {faList} from "@fortawesome/free-solid-svg-icons";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTableCells} from "@fortawesome/free-solid-svg-icons/faTableCells";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {RootState} from "../../store";
+import { memo } from 'react';
+import { faList } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTableCells } from "@fortawesome/free-solid-svg-icons/faTableCells";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import s from "./BooksDisplayPanel.module.scss";
 import useActions from "../../hooks/useActions";
 import classNames from "classnames";
-import {BooksViewType} from "../../types/booksView";
+import { BooksViewType } from '../../types/book';
 
 
 const BooksDisplayPanel = () => {
-    const currentViewType = useTypedSelector((state: RootState) => state.booksView.viewType);
-    const {setTableView, setRowView} = useActions();
+    const currentViewType = useTypedSelector(state => state.books.viewType);
+    const { setTableView, setRowView } = useActions();
 
     return (
         <div className={s["icons"]}>
@@ -22,7 +21,7 @@ const BooksDisplayPanel = () => {
                     s["icon"],
                     currentViewType == BooksViewType.TABLE_VIEW && s["icon_active"]
                 )}
-                onClick={setTableView}  />
+                onClick={setTableView} />
             <FontAwesomeIcon
                 icon={faList}
                 className={classNames(

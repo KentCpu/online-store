@@ -1,14 +1,13 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import BookService from "../../../services/BookService";
-import {useParams} from "react-router-dom";
-import {GlobalLoader} from "../../ui/GlobalLoader/GlobalLoader";
+import { useParams } from "react-router-dom";
+import { GlobalLoader } from "../../ui/GlobalLoader/GlobalLoader";
 import s from "./Book.module.scss";
 import Button from "../../ui/Button/Button";
 import Title from "../../ui/Title/Title";
 import classNames from "classnames";
 import NotFound from "../NotFound/NotFound";
-import {IPreviewBook} from "../PreviewBooks/PreviewBook";
-import {getInfoBook} from "../../../utils/helpers";
+import { IPreviewBook } from "../PreviewBooks/PreviewBook";
 
 
 export interface IBook extends IPreviewBook {
@@ -20,7 +19,7 @@ export interface IBook extends IPreviewBook {
 }
 
 const Book = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     const [isLoader, setIsLoader] = useState(false);
     const [book, setBook] = useState<IBook>({} as IBook);
 
@@ -29,18 +28,18 @@ const Book = () => {
         if (id) {
             setIsLoader(true);
             BookService.getBook(id)
-                .then(book => setBook(getInfoBook(book.data)))
+                .then(book => setBook(book.data))
                 .catch(e => console.error(e))
                 .finally(() => setIsLoader(false));
         }
     }, []);
 
     if (isLoader) {
-        return <GlobalLoader/>
+        return <GlobalLoader />
     }
 
     if (!Object.keys(book).length) {
-        return <NotFound/>
+        return <NotFound />
     }
 
 

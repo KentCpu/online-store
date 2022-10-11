@@ -1,12 +1,11 @@
-import {FC, memo} from 'react';
+import { FC, memo } from 'react';
 import s from "./PreviewBook.module.scss";
-import {Link, NavLink} from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Button from "../../ui/Button/Button";
-import {HOME_ROUTE} from "../../../utils/constants/url";
-import {BooksViewType} from "../../../types/booksView";
+import { BOOKS_ROUTE } from "../../../utils/constants/url";
 import classNames from "classnames";
-import {useTypedSelector} from "../../../hooks/useTypedSelector";
-import {RootState} from "../../../store";
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { BooksViewType } from '../../../types/book';
 
 export interface IPreviewBook {
     id: string;
@@ -18,21 +17,22 @@ export interface IPreviewBook {
     description: string,
 }
 
-const PreviewBook: FC<IPreviewBook> = ({id, title, authors, imageLink, price, isAvailable, description}) => {
-    const viewType = useTypedSelector((state: RootState) => state.booksView.viewType);
+const PreviewBook: FC<IPreviewBook> = ({ id, title, authors, imageLink, price, isAvailable, description }) => {
+    const viewType = useTypedSelector(state => state.books.viewType);
     const isRowView = viewType === BooksViewType.ROW_VIEW;
+
 
     return (
         <div className={classNames(s["book"], isRowView && s["book_row"])}>
             <div className={s["cover"]}>
-                <Link className={s["cover-link"]} to={`${HOME_ROUTE}/${id}`}>
-                    <img className={s["cover-img"]} src={imageLink} alt="Cover"/>
+                <Link className={s["cover-link"]} to={`${BOOKS_ROUTE}/${id}`}>
+                    <img className={s["cover-img"]} src={imageLink} alt="Cover" />
                 </Link>
             </div>
 
             <div className={classNames(s["body"], isRowView && s["body_row"])}>
                 <div className={s["info"]}>
-                    <NavLink className={s["title"]} to={`${HOME_ROUTE}/${id}`}>{title}</NavLink>
+                    <NavLink className={s["title"]} to={`${BOOKS_ROUTE}/${id}`}>{title}</NavLink>
                     <p className={s["author"]}>{authors}</p>
                     {
                         isRowView && <p className={s["description"]}>{description}</p>

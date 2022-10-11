@@ -1,47 +1,72 @@
-import {FC} from 'react';
+import classNames from "classnames";
+import { FC, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import useActions from '../../../hooks/useActions';
+import { useIsFirstRender } from '../../../hooks/useIsFirstRender';
+import { useTypedSelector } from "../../../hooks/useTypedSelector";
+import { BooksViewType } from '../../../types/book';
+import BooksDisplayPanel from "../../BooksDisplayPanel/BooksDisplayPanel";
+import ScrollLoader from '../../ScrollLoader/ScrollLoader';
+import ScrollTop from "../../ScrollTop/ScrollTop";
+import ClipLoader from "react-spinners/ClipLoader";
+import Title from "../../ui/Title/Title";
 import Book from "./PreviewBook";
 import s from "./PreviewBook.module.scss";
-import {getInfoPreviewBook} from "../../../utils/helpers";
-import Title from "../../ui/Title/Title";
-import {useTypedSelector} from "../../../hooks/useTypedSelector";
-import {RootState} from "../../../store";
-import ScrollLoader from "../../ScrollLoader/ScrollLoader";
-import useActions from "../../../hooks/useActions";
-import BooksDisplayPanel from "../../BooksDisplayPanel/BooksDisplayPanel";
-import classNames from "classnames";
-import {BooksViewType} from "../../../types/booksView";
-import ScrollTop from "../../ScrollTop/ScrollTop";
 
 
-const PreviewBooks: FC = () => {
-    const title = useTypedSelector((state: RootState) => state.books.title);
-    const books = useTypedSelector((state: RootState) => state.books.books);
-    const viewType = useTypedSelector((state: RootState) => state.booksView.viewType);
-    const {loadScrollBooks} = useActions();
-    const Books = books?.map(book => getInfoPreviewBook(book));
- 
-    const loadScrollBooksWrapper = async () => {
-        await loadScrollBooks(title, Books?.length);
+export const PreviewBooks: FC = () => {
+    const [isLoader, setIsLoader] = useState(false);
+    const { books, viewType } = useTypedSelector(state => state.books);
+    const title = new URLSearchParams(useLocation().search).get("title");
+    const { findBooks, loadScrollBooks } = useActions();
+    const isFirstRender = useIsFirstRender();
+
+    const getBooks = async () => {
+        if (title) {
+            setIsLoader(true);
+            try {
+                await findBooks(title, isFirstRender);
+            } catch (e) {
+                console.error(e);
+            } finally {
+                setIsLoader(false);
+            }
+        }
     }
 
-    
+    useEffect(() => {
+        getBooks();
+    }, [title]);
+
+    const loadMoreBooks = async () => {
+        if (title) {
+            await loadScrollBooks(title, books.length);
+        }
+    }
+
+
     return (
         <>
             <div className={s["books-view"]}>
-                <BooksDisplayPanel/>
+                <BooksDisplayPanel />
             </div>
-            {
-                Books ?
-                    <>  
+
+            {isLoader ?
+                <div className={s["scroll-loader"]}>
+                    <ClipLoader size={70} />
+                </div>
+                :
+                books.length > 0 ?
+                    <>
                         <div className={
                             classNames(
                                 s["book-container"],
                                 viewType === BooksViewType.ROW_VIEW && s["book-container_row"])}>
                             {
-                                Books.map((book, index) => {
+                                books.map((book, index) => {
                                     return <Book
-                                        id={book.id}
                                         key={index}
+                                        id={book.id}
                                         title={book.title}
                                         authors={book.authors}
                                         price={book.price}
@@ -52,20 +77,14 @@ const PreviewBooks: FC = () => {
                                 })
                             }
                         </div>
-                        {
-                            books.length > 0
-                            &&
-                            <div className={s["scroll-loader"]}>
-                                <ScrollLoader downloadData={loadScrollBooksWrapper}/>
-                            </div>
-                        }
-                        <ScrollTop/>
+                        <div className={s["scroll-loader"]}>
+                            <ScrollLoader downloadData={loadMoreBooks} />
+                        </div>
+                        <ScrollTop />
                     </>
                     :
-                    <Title headingLevels={"h2"}>We didn't find anything on your request!</Title>
+                    <Title>Книги не найдены</Title>
             }
         </>
     );
 };
-
-export default PreviewBooks;

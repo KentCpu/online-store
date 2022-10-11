@@ -2,26 +2,27 @@
 
 .footer {
   background-color: #20232A;
+
   &__wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     min-height: rem(60);
-    
+
     @media (max-width: 700px) {
       flex-direction: column;
-      padding: rem(20) 0;
+      padding: rem(17) 0;
     }
   }
 
   &__logo {
     @media (max-width: 700px) {
-      margin-bottom: rem(12);
+      margin-bottom: rem(5);
     }
   }
 }
 
-.copy{
+.copy {
   color: #86888A;
 }

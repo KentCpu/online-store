@@ -1,34 +1,34 @@
-import React, {useState, FC, SyntheticEvent, useRef} from 'react';
-import {IErrorRegistration} from '../../../types/IErrorRegistration';
-import {handleChange} from '../../../utils/helpers';
+import React, { useState, FC, SyntheticEvent, useRef } from 'react';
+import { IErrorRegistration } from '../../../types/IErrorRegistration';
+import { handleChange } from '../../../utils/helpers';
 import TextField from '../../ui/TextField/TextField';
 import s from "./Auth.module.scss";
 import useActions from "../../../hooks/useActions";
 import Title from "../../ui/Title/Title";
-import {Link, useNavigate} from "react-router-dom";
-import {HOME_ROUTE, LOGIN_ROUTE} from "../../../utils/constants/url";
-import {IRegistrationData} from "../../../types/IRegistrationData";
+import { Link, useNavigate } from "react-router-dom";
+import { BOOKS_ROUTE, LOGIN_ROUTE } from "../../../utils/constants/url";
+import { IRegistrationData } from "../../../types/IRegistrationData";
 import useTogglePassword from "../../../hooks/useTogglePassword";
 import PasswordIcon from "../../PasswordIcon/PasswordIcon";
 import Button from "../../ui/Button/Button";
 
 
 const RegistrationForm: FC = () => {
-    const {registration} = useActions();
+    const { registration } = useActions();
     const [error, setError] = useState({} as IErrorRegistration);
     const [userData, setUserData] = useState<IRegistrationData>({
         email: "",
         nickname: "",
         password: "",
     });
-    const {isVisible, type, changePassword} = useTogglePassword();
+    const { isVisible, type, changePassword } = useTogglePassword();
     const inputRef = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
         await registration(userData, setError);
-        navigate(HOME_ROUTE);
+        navigate(BOOKS_ROUTE);
     }
 
 
@@ -71,7 +71,7 @@ const RegistrationForm: FC = () => {
                             value={userData.password}
                             type={type}
                             errorMessage={error?.password}
-                            endIcon={<PasswordIcon isVisible={isVisible} changePassword={changePassword}/>}
+                            endIcon={<PasswordIcon isVisible={isVisible} changePassword={changePassword} />}
                             onChange={(e) => handleChange<IRegistrationData>(e, setUserData)}
                         />
                     </div>

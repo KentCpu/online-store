@@ -1,35 +1,35 @@
-import React, {SyntheticEvent, useRef, useState} from 'react'
+import React, { SyntheticEvent, useRef, useState } from 'react'
 import useActions from "../../../hooks/useActions";
-import {IRegistrationData} from "../../../types/IRegistrationData";
+import { IRegistrationData } from "../../../types/IRegistrationData";
 import useTogglePassword from "../../../hooks/useTogglePassword";
 import s from "./Auth.module.scss";
 import Title from "../../ui/Title/Title";
 import TextField from "../../ui/TextField/TextField";
-import {handleChange} from "../../../utils/helpers";
+import { handleChange } from "../../../utils/helpers";
 import PasswordIcon from "../../PasswordIcon/PasswordIcon";
-import {Link} from "react-router-dom";
-import {HOME_ROUTE, REGISTRATION_ROUTE} from "../../../utils/constants/url";
-import {ILoginData} from "../../../types/ILoginData";
-import {IErrorLogin} from "../../../types/IErrorLogin";
-import {useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { BOOKS_ROUTE, REGISTRATION_ROUTE } from "../../../utils/constants/url";
+import { ILoginData } from "../../../types/ILoginData";
+import { IErrorLogin } from "../../../types/IErrorLogin";
+import { useNavigate } from "react-router-dom";
 import Button from "../../ui/Button/Button";
 
 
 const LoginForm = () => {
-    const {login} = useActions();
+    const { login } = useActions();
     const [error, setError] = useState({} as IErrorLogin);
     const [userData, setUserData] = useState<ILoginData>({
         email: "",
         password: "",
     });
-    const {isVisible, type, changePassword} = useTogglePassword();
+    const { isVisible, type, changePassword } = useTogglePassword();
     const inputRef = useRef<HTMLInputElement>(null);
     const navigate = useNavigate();
 
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
         await login(userData, setError);
-        navigate(HOME_ROUTE);
+        navigate(BOOKS_ROUTE);
     }
 
 
@@ -61,7 +61,7 @@ const LoginForm = () => {
                             value={userData.password}
                             type={type}
                             errorMessage={error?.password}
-                            endIcon={<PasswordIcon isVisible={isVisible} changePassword={changePassword}/>}
+                            endIcon={<PasswordIcon isVisible={isVisible} changePassword={changePassword} />}
                             onChange={(e) => handleChange<IRegistrationData>(e, setUserData)}
                         />
 

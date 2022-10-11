@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import useActions from '../../../hooks/useActions';
-import useIsMount from '../../../hooks/useIsMount';
+import { useIsFirstRender } from '../../../hooks/useIsFirstRender';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { SERVER_URL } from '../../../utils/constants/url';
 import Button from "../../ui/Button/Button";
@@ -13,10 +13,10 @@ const ChangeAvatar = () => {
     const { id, avatar } = useTypedSelector(state => state.user.userData!);
     const [previewAvatar, setPreviewAvatar] = useState<Blob | null>();
     const fileInputRef = useRef<HTMLInputElement>(null);
-    const isMount = useIsMount();
+    const isFirstRender = useIsFirstRender();
 
     useEffect(() => {
-        if (isMount) {
+        if (!isFirstRender) {
             if (previewAvatar) {
                 const formData = new FormData();
                 formData.append("id", id);

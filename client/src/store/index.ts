@@ -1,13 +1,12 @@
 import { userReducer } from './reducers/userReducer';
-import {combineReducers, applyMiddleware, createStore} from "redux";
+import { combineReducers, applyMiddleware, createStore } from "redux";
 import thunk from "redux-thunk";
-import {booksReducer} from "./reducers/booksReducer";
-import {booksViewReducer} from "./reducers/booksViewReducer";
+import { booksReducer } from './reducers/booksReducer';
+
 
 const rootReducer = combineReducers({
     user: userReducer,
     books: booksReducer,
-    booksView: booksViewReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));

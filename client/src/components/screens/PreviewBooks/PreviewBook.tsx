@@ -11,7 +11,7 @@ export interface IPreviewBook {
     id: string;
     title: string;
     authors: string;
-    imageLink: string | undefined;
+    imageLink: string;
     price: string;
     isAvailable: boolean;
     description: string,

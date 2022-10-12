@@ -1,8 +1,7 @@
-import React from 'react';
-import {Routes, Route} from "react-router-dom";
-import {privateRoutes, publicRoutes} from '../utils/constants/routes';
-import {useTypedSelector} from "../hooks/useTypedSelector";
-import {RootState} from "../store";
+import { Routes, Route } from "react-router-dom";
+import { privateRoutes, publicRoutes } from '../utils/constants/routes';
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { RootState } from "../store";
 
 
 const AppRouter = () => {
@@ -12,8 +11,8 @@ const AppRouter = () => {
         (
             <Routes>
                 {
-                    privateRoutes.map(({path, element}, i) => {
-                        return <Route key={i} path={path} element={element}/>
+                    privateRoutes.map(({ path, element }, i) => {
+                        return <Route key={i} path={path} element={element} />
                     })
                 }
             </Routes>
@@ -22,8 +21,8 @@ const AppRouter = () => {
         (
             <Routes>
                 {
-                    publicRoutes.map(({path, element}, i) => {
-                        return <Route key={i} path={path} element={element}/>
+                    publicRoutes.map(({ path, element }, i) => {
+                        return <Route key={i} path={path} element={element} />
                     })
                 }
             </Routes>

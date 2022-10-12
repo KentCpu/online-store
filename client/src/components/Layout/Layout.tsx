@@ -1,16 +1,8 @@
 import { FC, PropsWithChildren } from 'react';
-import Header from "../Header/Header";
-import { GlobalLoader } from "../ui/GlobalLoader/GlobalLoader";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { RootState } from "../../store";
 import { Footer } from "../Footer/Footer";
+import Header from "../Header/Header";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-    const isLoading = useTypedSelector((state: RootState) => state?.user.isLoading);
-    if (isLoading) {
-        return <GlobalLoader />;
-    }
-
     return (
         <>
             <Header />

@@ -3,20 +3,12 @@ import { IUser } from './IUser';
 
 export enum UserActionTypes {
     SET_USER = "SET_USER",
-    SET_LOADING = "SET_LOADING",
     SET_AUTH = "SET_AUTH",
 }
-
 
 export interface UserState {
     userData: IUser | null,
     isAuth: boolean,
-    isLoading: boolean,
-}
-
-export interface SetLoadingAction {
-    type: UserActionTypes.SET_LOADING,
-    payload: boolean,
 }
 
 export interface SetUserAction {
@@ -31,4 +23,4 @@ export interface SetAuthAction {
     payload: boolean,
 }
 
-export type UserAction = SetUserAction | SetLoadingAction | SetAuthAction;
+export type UserAction = SetUserAction | SetAuthAction;

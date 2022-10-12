@@ -21,20 +21,21 @@ export const PreviewBooks: FC = () => {
     const { findBooks, loadScrollBooks } = useActions();
     const isFirstRender = useIsFirstRender();
 
-    const getBooks = async () => {
-        if (title) {
-            setIsLoader(true);
-            try {
-                await findBooks(title, isFirstRender);
-            } catch (e) {
-                console.error(e);
-            } finally {
-                setIsLoader(false);
-            }
-        }
-    }
 
     useEffect(() => {
+        async function getBooks() {
+            if (title) {
+                setIsLoader(true);
+                try {
+                    await findBooks(title, isFirstRender);
+                } catch (e) {
+                    console.error(e);
+                } finally {
+                    setIsLoader(false);
+                }
+            }
+        }
+
         getBooks();
     }, [title]);
 

@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import './App.scss';
 import AppRouter from './components/AppRouter';
@@ -7,15 +7,30 @@ import useActions from "./hooks/useActions";
 
 
 const App: FC = () => {
+    const [isLoader, setIsLoader] = useState(true);
     const { checkAuth } = useActions();
 
 
     useEffect(() => {
+        async function checkAuthUser() {
+            try {
+                await checkAuth();
+            } catch (error) {
+                console.error(error);
+            } finally {
+                setIsLoader(false);
+            }
+        }
+
         if (localStorage.getItem("token")) {
-            checkAuth();
+            checkAuthUser();
         }
     }, []);
 
+
+    if (isLoader) {
+        return <GlobalLoader />
+    }
 
 
     return (

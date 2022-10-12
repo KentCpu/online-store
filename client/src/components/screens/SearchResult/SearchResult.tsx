@@ -1,5 +1,5 @@
 import s from "./SearchResult.module.scss";
-import { PreviewBooks } from "../PreviewBooks/PreviewBooks";
+import { PreviewBooks } from "../../PreviewBooks/PreviewBooks";
 import classNames from "classnames";
 
 

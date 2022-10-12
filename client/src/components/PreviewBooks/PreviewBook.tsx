@@ -1,23 +1,24 @@
-import { FC, memo } from 'react';
-import s from "./PreviewBook.module.scss";
-import { Link, NavLink } from "react-router-dom";
-import Button from "../../ui/Button/Button";
-import { BOOKS_ROUTE } from "../../../utils/constants/url";
 import classNames from "classnames";
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { BooksViewType } from '../../../types/book';
+import { FC, memo } from 'react';
+import { Link, NavLink } from "react-router-dom";
+import coverEmpty from "../../assets/img/empty-cover-book.png";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { BooksViewType } from '../../types/book';
+import { BOOKS_ROUTE } from "../../utils/constants/url";
+import Button from "../ui/Button/Button";
+import s from "./PreviewBook.module.scss";
 
 export interface IPreviewBook {
     id: string;
     title: string;
     authors: string;
-    imageLink: string;
+    coverLink: string;
     price: string;
     isAvailable: boolean;
     description: string,
 }
 
-const PreviewBook: FC<IPreviewBook> = ({ id, title, authors, imageLink, price, isAvailable, description }) => {
+const PreviewBook: FC<IPreviewBook> = ({ id, title, authors, coverLink, price, isAvailable, description }) => {
     const viewType = useTypedSelector(state => state.books.viewType);
     const isRowView = viewType === BooksViewType.ROW_VIEW;
 
@@ -26,7 +27,7 @@ const PreviewBook: FC<IPreviewBook> = ({ id, title, authors, imageLink, price, i
         <div className={classNames(s["book"], isRowView && s["book_row"])}>
             <div className={s["cover"]}>
                 <Link className={s["cover-link"]} to={`${BOOKS_ROUTE}/${id}`}>
-                    <img className={s["cover-img"]} src={imageLink} alt="Cover" />
+                    <img className={s["cover-img"]} src={coverLink ? coverLink : coverEmpty} alt="Cover" />
                 </Link>
             </div>
 

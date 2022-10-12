@@ -2,7 +2,7 @@ import { store } from './../index';
 import { AppDispatch } from "../index";
 import BookService from "../../services/BookService";
 import { AddBooksAction, BooksActionTypes, BooksViewType, SetBooksAction, SetViewAction } from "../../types/book";
-import { IPreviewBook } from "../../components/screens/PreviewBooks/PreviewBook";
+import { IPreviewBook } from "../../components/PreviewBooks/PreviewBook";
 
 export const BookActions = {
     setBooks: (books: IPreviewBook[]): SetBooksAction => ({

@@ -1,4 +1,4 @@
-import { IPreviewBook } from './../components/screens/PreviewBooks/PreviewBook';
+import { IPreviewBook } from '../components/PreviewBooks/PreviewBook';
 
 
 export interface BooksState {

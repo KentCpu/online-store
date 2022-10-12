@@ -7,7 +7,8 @@ import Button from "../../ui/Button/Button";
 import Title from "../../ui/Title/Title";
 import classNames from "classnames";
 import NotFound from "../NotFound/NotFound";
-import { IPreviewBook } from "../PreviewBooks/PreviewBook";
+import { IPreviewBook } from "../../PreviewBooks/PreviewBook";
+import coverEmpty from "../../../assets/img/empty-cover-book.png";
 
 
 export interface IBook extends IPreviewBook {
@@ -47,7 +48,7 @@ const Book = () => {
         <div className={classNames("container", s["book-container"])}>
             <div className={s["header"]}>
                 <div className={s["cover"]}>
-                    <img className={s["cover-pic"]} src={book.imageLink} alt="Cover"></img>
+                    <img className={s["cover-pic"]} src={book.coverLink ? book.coverLink : coverEmpty} alt="Cover"></img>
                 </div>
 
                 <div className={s["info"]}>

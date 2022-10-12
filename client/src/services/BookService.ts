@@ -1,5 +1,5 @@
 import { IBook } from './../components/screens/Book/Book';
-import { IPreviewBook } from './../components/screens/PreviewBooks/PreviewBook';
+import { IPreviewBook } from '../components/PreviewBooks/PreviewBook';
 import { AxiosResponse } from "axios";
 import $api from "../http";
 

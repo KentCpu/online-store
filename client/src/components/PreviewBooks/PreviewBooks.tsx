@@ -1,24 +1,24 @@
 import classNames from "classnames";
 import { FC, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import useActions from '../../../hooks/useActions';
-import { useIsFirstRender } from '../../../hooks/useIsFirstRender';
-import { useTypedSelector } from "../../../hooks/useTypedSelector";
-import { BooksViewType } from '../../../types/book';
-import BooksDisplayPanel from "../../BooksDisplayPanel/BooksDisplayPanel";
-import ScrollLoader from '../../ScrollLoader/ScrollLoader';
-import ScrollTop from "../../ScrollTop/ScrollTop";
+import useActions from '../../hooks/useActions';
+import { useIsFirstRender } from '../../hooks/useIsFirstRender';
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { BooksViewType } from '../../types/book';
+import BooksDisplayPanel from "../BooksDisplayPanel/BooksDisplayPanel";
+import ScrollLoader from '../ScrollLoader/ScrollLoader';
+import ScrollTop from "../ScrollTop/ScrollTop";
 import ClipLoader from "react-spinners/ClipLoader";
-import Title from "../../ui/Title/Title";
+import Title from "../ui/Title/Title";
 import Book from "./PreviewBook";
 import s from "./PreviewBook.module.scss";
 
 
 export const PreviewBooks: FC = () => {
+    const { findBooks, loadScrollBooks } = useActions();
     const [isLoader, setIsLoader] = useState(false);
     const { books, viewType } = useTypedSelector(state => state.books);
     const title = new URLSearchParams(useLocation().search).get("title");
-    const { findBooks, loadScrollBooks } = useActions();
     const isFirstRender = useIsFirstRender();
 
 
@@ -72,7 +72,7 @@ export const PreviewBooks: FC = () => {
                                         authors={book.authors}
                                         price={book.price}
                                         isAvailable={book.isAvailable}
-                                        imageLink={book.imageLink}
+                                        coverLink={book.coverLink}
                                         description={book.description}
                                     />
                                 })
@@ -84,7 +84,7 @@ export const PreviewBooks: FC = () => {
                         <ScrollTop />
                     </>
                     :
-                    <Title>Книги не найдены</Title>
+                    <Title>Nothing found for your request</Title>
             }
         </>
     );

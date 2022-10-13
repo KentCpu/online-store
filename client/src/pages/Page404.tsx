@@ -1,5 +1,5 @@
-import NotFound from "../components/screens/NotFound/NotFound";
-import Layout from "../components/Layout/Layout";
+import { NotFound } from "../components/screens/NotFound/NotFound";
+import { Layout } from "../components/Layout/Layout";
 
 const Page404 = () => {
     return (

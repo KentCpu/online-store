@@ -1,11 +1,8 @@
-import React, {FC} from "react";
-import RegistrationForm from "../components/screens/AuthForm/RegisterForm";
+import { RegistrationForm } from "../components/screens/AuthForm/RegisterForm";
 
-const RegistrationPage: FC = () => {
+const RegistrationPage = () => {
     return (
-        <div>
-            <RegistrationForm/>
-        </div>
+        <RegistrationForm />
     )
 };
 

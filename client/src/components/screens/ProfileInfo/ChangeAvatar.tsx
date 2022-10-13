@@ -1,14 +1,14 @@
 import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import useActions from '../../../hooks/useActions';
+import { useActions } from '../../../hooks/useActions';
 import { useIsFirstRender } from '../../../hooks/useIsFirstRender';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { SERVER_URL } from '../../../utils/constants/url';
-import Button from "../../ui/Button/Button";
-import TextField from "../../ui/TextField/TextField";
+import { Button } from "../../ui/Button/Button";
+import { TextField } from "../../ui/TextField/TextField";
 import s from "./ChangeAvatar.module.scss";
 
 
-const ChangeAvatar = () => {
+export const ChangeAvatar = () => {
     const { uploadAvatar, deleteAvatar } = useActions();
     const { id, avatar } = useTypedSelector(state => state.user.userData!);
     const [previewAvatar, setPreviewAvatar] = useState<Blob | null>();
@@ -66,5 +66,3 @@ const ChangeAvatar = () => {
         </div>
     );
 };
-
-export default ChangeAvatar;

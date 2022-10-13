@@ -1,5 +1,5 @@
-import React, {ButtonHTMLAttributes, FC, ReactNode} from 'react';
-import ButtonBase from "../ButtonBase/ButtonBase";
+import { ButtonHTMLAttributes, FC, ReactNode } from 'react';
+import { ButtonBase } from "../ButtonBase/ButtonBase";
 import s from "./Button.module.scss";
 import classNames from "classnames";
 
@@ -9,8 +9,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 
-const Button: FC<ButtonProps> = (props) => {
-    const {startIcon, endIcon, type, disabled, className, onClick, children} = props;
+export const Button: FC<ButtonProps> = (props) => {
+    const { startIcon, endIcon, type, disabled, className, onClick, children } = props;
     return (
         <ButtonBase
             type={type}
@@ -24,5 +24,3 @@ const Button: FC<ButtonProps> = (props) => {
         </ButtonBase>
     );
 };
-
-export default Button;

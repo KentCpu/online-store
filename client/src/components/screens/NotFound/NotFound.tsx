@@ -1,21 +1,16 @@
-import Title from "../../ui/Title/Title";
+import { Title } from "../../ui/Title/Title";
 import { useNavigate } from "react-router-dom";
 import { BOOKS_ROUTE } from "../../../utils/constants/url";
 import s from "./NotFound.module.scss";
-import Button from "../../ui/Button/Button";
-import { useEffect } from "react";
+import { Button } from "../../ui/Button/Button";
 
 
-const NotFound = () => {
+export const NotFound = () => {
     const navigate = useNavigate();
 
     const backMainPage = () => {
         navigate(BOOKS_ROUTE);
     }
-
-    useEffect(() => {
-        console.log("1")
-    }, []);
 
     return (
         <section className={s.section}>
@@ -27,5 +22,3 @@ const NotFound = () => {
         </section>
     );
 };
-
-export default NotFound;

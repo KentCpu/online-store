@@ -12,7 +12,7 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 
-const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
     const { label, accept, placeholder, name, type = "text", value, disabled, errorMessage, onChange, className, endIcon } = props;
     const isFirstRender = useIsFirstRender();
     const internalRef = useRef<HTMLInputElement>(null);
@@ -46,6 +46,4 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
             {errorMessage && <p className={s.errorMessage}>{errorMessage}</p>}
         </label>
     );
-})
-
-export default TextField;
+});

@@ -1,12 +1,12 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import './App.scss';
-import AppRouter from './components/AppRouter';
+import { AppRouter } from './components/AppRouter';
 import { GlobalLoader } from './components/ui/GlobalLoader/GlobalLoader';
-import useActions from "./hooks/useActions";
+import { useActions } from "./hooks/useActions";
 
 
-const App: FC = () => {
+const App = () => {
     const [isLoader, setIsLoader] = useState(true);
     const { checkAuth } = useActions();
 

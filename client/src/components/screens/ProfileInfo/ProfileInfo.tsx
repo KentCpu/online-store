@@ -3,9 +3,9 @@ import { FormEvent, useEffect, useState } from 'react';
 import { useTypedSelector } from "../../../hooks/useTypedSelector";
 import UserService from "../../../services/UserService";
 import { handleChange } from "../../../utils/helpers";
-import Button from "../../ui/Button/Button";
-import TextField from "../../ui/TextField/TextField";
-import ChangeAvatar from "./ChangeAvatar";
+import { Button } from "../../ui/Button/Button";
+import { TextField } from "../../ui/TextField/TextField";
+import { ChangeAvatar } from "./ChangeAvatar";
 import s from "./ProfileInfo.module.scss";
 
 

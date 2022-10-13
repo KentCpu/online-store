@@ -5,7 +5,7 @@ import coverEmpty from "../../assets/img/empty-cover-book.png";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { BooksViewType } from '../../types/book';
 import { BOOKS_ROUTE } from "../../utils/constants/url";
-import Button from "../ui/Button/Button";
+import { Button } from "../ui/Button/Button";
 import s from "./PreviewBook.module.scss";
 
 export interface IPreviewBook {

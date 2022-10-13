@@ -1,7 +1,7 @@
-import React, {useEffect, useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 
 
-const useScroll = (downloadData: Function, lastVisibleElementRef: React.RefObject<HTMLElement | null>) => {
+export const useScroll = (downloadData: Function, lastVisibleElementRef: React.RefObject<HTMLElement | null>) => {
     const observer = useRef<IntersectionObserver | null>(null);
 
     useEffect(() => {
@@ -22,5 +22,3 @@ const useScroll = (downloadData: Function, lastVisibleElementRef: React.RefObjec
         };
     }, [downloadData]);
 };
-
-export default useScroll;

@@ -1,17 +1,17 @@
 import classNames from "classnames";
 import { FC, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import useActions from '../../hooks/useActions';
+import { useActions } from '../../hooks/useActions';
 import { useIsFirstRender } from '../../hooks/useIsFirstRender';
 import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { BooksViewType } from '../../types/book';
 import BooksDisplayPanel from "../BooksDisplayPanel/BooksDisplayPanel";
-import ScrollLoader from '../ScrollLoader/ScrollLoader';
-import ScrollTop from "../ScrollTop/ScrollTop";
+import { ScrollLoader } from '../ScrollLoader/ScrollLoader';
 import ClipLoader from "react-spinners/ClipLoader";
-import Title from "../ui/Title/Title";
+import { Title } from "../ui/Title/Title";
 import Book from "./PreviewBook";
 import s from "./PreviewBook.module.scss";
+import { ScrollTop } from "../ScrollTop/ScrollTop";
 
 
 export const PreviewBooks: FC = () => {

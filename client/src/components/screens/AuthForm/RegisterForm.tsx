@@ -1,19 +1,19 @@
-import React, { useState, FC, SyntheticEvent, useRef } from 'react';
+import { useState, FC, SyntheticEvent, useRef } from 'react';
 import { IErrorRegistration } from '../../../types/IErrorRegistration';
 import { handleChange } from '../../../utils/helpers';
-import TextField from '../../ui/TextField/TextField';
+import { TextField } from '../../ui/TextField/TextField';
 import s from "./Auth.module.scss";
-import useActions from "../../../hooks/useActions";
-import Title from "../../ui/Title/Title";
+import { useActions } from "../../../hooks/useActions";
+import { Title } from "../../ui/Title/Title";
 import { Link, useNavigate } from "react-router-dom";
 import { BOOKS_ROUTE, LOGIN_ROUTE } from "../../../utils/constants/url";
 import { IRegistrationData } from "../../../types/IRegistrationData";
-import useTogglePassword from "../../../hooks/useTogglePassword";
+import { useTogglePassword } from "../../../hooks/useTogglePassword";
 import PasswordIcon from "../../PasswordIcon/PasswordIcon";
-import Button from "../../ui/Button/Button";
+import { Button } from "../../ui/Button/Button";
 
 
-const RegistrationForm: FC = () => {
+export const RegistrationForm: FC = () => {
     const { registration } = useActions();
     const [error, setError] = useState({} as IErrorRegistration);
     const [userData, setUserData] = useState<IRegistrationData>({
@@ -83,5 +83,3 @@ const RegistrationForm: FC = () => {
         </div>
     );
 }
-
-export default RegistrationForm;

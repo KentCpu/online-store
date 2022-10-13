@@ -1,13 +1,9 @@
-import React from 'react';
-import LoginForm from "../components/screens/AuthForm/LoginForm";
+import { LoginForm } from "../components/screens/AuthForm/LoginForm";
 
 
-export const LoginPage: React.FC = () => {
-
+const LoginPage = () => {
     return (
-        <>
-           <LoginForm/>
-        </>
+        <LoginForm />
     )
 }
 

@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import s from "./ScrollTop.module.scss";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowUp} from "@fortawesome/free-solid-svg-icons/faArrowUp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons/faArrowUp";
 
-const ScrollTop = () => {
+export const ScrollTop = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -37,11 +37,9 @@ const ScrollTop = () => {
                 isVisible
                 &&
                 <div onClick={scrollUp} className={s["scroll-top"]}>
-                    <FontAwesomeIcon className={s["scroll-icon"]} icon={faArrowUp}/>
+                    <FontAwesomeIcon className={s["scroll-icon"]} icon={faArrowUp} />
                 </div>
             }
         </>
     );
 };
-
-export default ScrollTop;

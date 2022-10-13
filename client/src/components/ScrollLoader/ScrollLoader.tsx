@@ -1,12 +1,12 @@
 import { FC, useRef, useState } from 'react';
 import ClipLoader from "react-spinners/ClipLoader";
-import useScroll from "../../hooks/useScroll";
+import { useScroll } from "../../hooks/useScroll";
 
 interface DownloadScrollProps {
-    downloadData: any,
+    downloadData: Function,
 }
 
-const ScrollLoader: FC<DownloadScrollProps> = ({ downloadData }) => {
+export const ScrollLoader: FC<DownloadScrollProps> = ({ downloadData }) => {
     const lastElementVisible = useRef<HTMLDivElement | null>(null);
     const [isLoader, setIsLoader] = useState(false);
     useScroll(downloadDataWrapper, lastElementVisible);
@@ -34,5 +34,3 @@ const ScrollLoader: FC<DownloadScrollProps> = ({ downloadData }) => {
         </div>
     );
 };
-
-export default ScrollLoader;

@@ -13,7 +13,10 @@
     height: rem(38);
     border-radius: rem(8);
     transition: all .3s;
-    &:hover, &:focus, &:active {
+
+    &:hover,
+    &:focus,
+    &:active {
       background-color: #fff;
     }
   }

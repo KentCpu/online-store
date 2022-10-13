@@ -1,11 +1,11 @@
 import React from "react";
-import LoginPage from "../../pages/LoginPage";
-import RegistrationPage from "../../pages/RegistrationPage";
-import { BOOK_ROUTE, BOOKS_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE } from "./url";
-import Page404 from "../../pages/Page404";
-import { SearchPage } from "../../pages/SearchPage";
 import BookPage from "../../pages/BookPage";
-import { ProfilePage } from "../../pages/ProfilePage";
+import LoginPage from "../../pages/LoginPage";
+import Page404 from "../../pages/Page404";
+import ProfilePage from "../../pages/ProfilePage";
+import RegistrationPage from "../../pages/RegistrationPage";
+import SearchPage from "../../pages/SearchPage";
+import { BOOKS_ROUTE, BOOK_ROUTE, LOGIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE } from "./url";
 
 
 export interface IRoute {

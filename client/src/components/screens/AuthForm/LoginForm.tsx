@@ -1,10 +1,10 @@
-import React, { SyntheticEvent, useRef, useState } from 'react'
-import useActions from "../../../hooks/useActions";
+import { SyntheticEvent, useRef, useState } from 'react'
+import { useActions } from "../../../hooks/useActions";
 import { IRegistrationData } from "../../../types/IRegistrationData";
-import useTogglePassword from "../../../hooks/useTogglePassword";
+import { useTogglePassword } from "../../../hooks/useTogglePassword";
 import s from "./Auth.module.scss";
-import Title from "../../ui/Title/Title";
-import TextField from "../../ui/TextField/TextField";
+import { Title } from "../../ui/Title/Title";
+import { TextField } from "../../ui/TextField/TextField";
 import { handleChange } from "../../../utils/helpers";
 import PasswordIcon from "../../PasswordIcon/PasswordIcon";
 import { Link } from "react-router-dom";
@@ -12,10 +12,10 @@ import { BOOKS_ROUTE, REGISTRATION_ROUTE } from "../../../utils/constants/url";
 import { ILoginData } from "../../../types/ILoginData";
 import { IErrorLogin } from "../../../types/IErrorLogin";
 import { useNavigate } from "react-router-dom";
-import Button from "../../ui/Button/Button";
+import { Button } from "../../ui/Button/Button";
 
 
-const LoginForm = () => {
+export const LoginForm = () => {
     const { login } = useActions();
     const [error, setError] = useState({} as IErrorLogin);
     const [userData, setUserData] = useState<ILoginData>({
@@ -75,5 +75,3 @@ const LoginForm = () => {
         </div>
     );
 }
-
-export default LoginForm;

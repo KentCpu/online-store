@@ -1,16 +1,14 @@
-import React, {FC} from 'react';
+import { FC } from 'react';
 import s from "./Header.module.scss";
-import {Link} from "react-router-dom";
-import {LOGIN_ROUTE, REGISTRATION_ROUTE} from "../../utils/constants/url";
-import {useTypedSelector} from "../../hooks/useTypedSelector";
-import {RootState} from "../../store";
-import Basket from "../Basket/Basket";
-import Profile from "./Profile";
+import { Link } from "react-router-dom";
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../../utils/constants/url";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { Basket } from "../Basket/Basket";
+import { Profile } from "./Profile";
 
 
-const Menu: FC = () => {
-    const isAuth = useTypedSelector((state: RootState) => state?.user.isAuth);
-
+export const Menu: FC = () => {
+    const isAuth = useTypedSelector(state => state.user?.isAuth);
 
     return (
         <div className={s["menu"]}>
@@ -20,8 +18,8 @@ const Menu: FC = () => {
                         isAuth
                             ?
                             <>
-                                <Profile/>
-                                <Basket/>
+                                <Profile />
+                                <Basket />
                             </>
                             :
                             <>
@@ -39,5 +37,3 @@ const Menu: FC = () => {
         </div>
     );
 };
-
-export default Menu;

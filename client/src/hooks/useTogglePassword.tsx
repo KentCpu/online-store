@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import { useState } from 'react';
 
 
-const useTogglePassword = () => {
+export const useTogglePassword = () => {
     const [isVisible, setIsVisible] = useState(false);
     const type = isVisible ? "text" : "password";
 
@@ -9,7 +9,5 @@ const useTogglePassword = () => {
         setIsVisible(isVisible => !isVisible);
     }
 
-    return {isVisible, type, changePassword};
+    return { isVisible, type, changePassword };
 };
-
-export default useTogglePassword;

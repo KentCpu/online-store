@@ -1,16 +1,16 @@
-import React, {ButtonHTMLAttributes, ReactNode} from 'react';
-import {forwardRef} from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import s from "./ButtonBase.module.scss";
 import classNames from "classnames";
 
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     startIcon?: ReactNode;
     endIcon?: ReactNode;
 }
 
-const ButtonBase = forwardRef<HTMLButtonElement, ButtonProps> ((props, ref) => {
-    const {type, disabled, className, onClick, startIcon, endIcon, children} =  props;
+export const ButtonBase = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+    const { type, disabled, className, onClick, startIcon, endIcon, children } = props;
 
     return (
         <button
@@ -26,5 +26,3 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonProps> ((props, ref) => {
         </button>
     );
 });
-
-export default ButtonBase;

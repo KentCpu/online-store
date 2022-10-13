@@ -1,15 +1,15 @@
-import React, {FC, HTMLAttributes, PropsWithChildren} from 'react';
+import { FC, HTMLAttributes } from 'react';
 import styles from "./Title.module.scss";
 import classNames from "classnames";
 
 
-interface TitleProps extends HTMLAttributes<HTMLTitleElement>{
+interface TitleProps extends HTMLAttributes<HTMLTitleElement> {
     headingLevels?: Sizes;
 }
 
 type Sizes = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
-const Title: FC<TitleProps> = ({ headingLevels = "h1", className, children }) => {
+export const Title: FC<TitleProps> = ({ headingLevels = "h1", className, children }) => {
     const Title = `${headingLevels}` as keyof JSX.IntrinsicElements;
 
     return (
@@ -20,5 +20,3 @@ const Title: FC<TitleProps> = ({ headingLevels = "h1", className, children }) =>
         </Title>
     )
 }
-
-export default Title;

@@ -1,0 +1,33 @@
+@import "../../../../scss/mixins/rem";
+
+.menu {
+    display: flex;
+
+    &__content {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    &__items {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+
+    &__item:not(:last-child) {
+        margin-right: rem(20);
+    }
+
+    &__link {
+        cursor: pointer;
+        text-decoration: none;
+        color: #fff;
+        transition: all 0.2s;
+
+        &:hover {
+            color: #61DAFB;
+        }
+    }
+}

@@ -1,10 +1,10 @@
 import { FC } from 'react';
-import s from "./Header.module.scss";
+import s from "./Menu.module.scss";
 import { Link } from "react-router-dom";
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../../utils/constants/url";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { Basket } from "../Basket/Basket";
-import { Profile } from "./Profile";
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from "../../../../utils/constants/url";
+import { useTypedSelector } from "../../../../hooks/useTypedSelector";
+import { Basket } from "../../../Basket/Basket";
+import { Profile } from "../Profile/Profile";
 
 
 export const Menu: FC = () => {

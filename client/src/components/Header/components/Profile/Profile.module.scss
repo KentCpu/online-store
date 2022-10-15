@@ -1,0 +1,65 @@
+@import "../../../../scss/mixins/rem";
+
+.profile {
+    position: relative;
+    margin-right: rem(20);
+
+    &__img {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+
+    &__link {
+        color: #fff;
+        font-size: rem(25);
+        text-decoration: none;
+        transition: all 0.2s;
+
+        &:hover {
+            color: #61DAFB;
+        }
+
+        @media (max-width: 425px) {
+            & {
+                font-size: rem(22);
+            }
+        }
+    }
+
+    @media (max-width: 425px) {
+        & {
+            margin-right: rem(13);
+        }
+    }
+}
+
+.dropdown {
+    width: 160px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(100%);
+    background-color: #f2f2f2;
+    border-radius: 5px;
+
+    &__item {
+        cursor: pointer;
+        text-align: center;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: rgb(207, 199, 199);
+        }
+    }
+
+    &__link {
+        color: black;
+        display: inline-block;
+        width: 100%;
+        padding: 12px 0;
+        text-decoration: none;
+    }
+}

@@ -5,7 +5,7 @@ import { BOOKS_ROUTE } from "../../utils/constants/url";
 import SearchPanel from "../SearchPanel/SearchPanel";
 import { Logo } from "../ui/Logo/Logo";
 import s from "./Header.module.scss";
-import { Menu } from "./Menu";
+import { Menu } from "./components/Menu/Menu";
 
 
 export const Header = () => {

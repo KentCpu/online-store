@@ -48,7 +48,7 @@ export const Profile = () => {
                         onClick={toggleDropDown}
                     />
                     :
-                    <FontAwesomeIcon icon={faUser} />
+                    <FontAwesomeIcon icon={faUser} color={'#fff'} fontSize='23px' />
             }
 
             {

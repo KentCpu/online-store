@@ -7,7 +7,7 @@ import { useActions } from "./hooks/useActions";
 
 
 const App = () => {
-    const [isLoader, setIsLoader] = useState(true);
+    const [isLoader, setIsLoader] = useState(false);
     const { checkAuth } = useActions();
 
 
